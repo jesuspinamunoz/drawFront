@@ -1,0 +1,3 @@
+<input style="width: 30px ;" type="text" id="txt_invoer" value={{leagueAlertLimit}} #NDraws>
+<button #value (click)="updateNDraws(NDraws.value)">Update Draws Limit</button>
+<ng-container *ngIf="isLimitDrawUpdated">updated!</ng-container>

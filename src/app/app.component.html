@@ -1,0 +1,117 @@
+
+<div id="loader" class="loader">
+    <img src="../assets/loader2.gif" width='50' height='50'><br>
+    Tumbling down the rabbit hole...
+</div>
+
+<div *ngIf="display">
+    <app-yearcomparison [leagueName]="league"></app-yearcomparison>
+</div>
+
+<span id="holeModal">
+    <div class="image" style="width: auto;height: 900px" [ngStyle]="{backgroundImage:'url(../assets/cesped4.jpg)', 'background-repeat': 'no-repeat', 'background-size': 'cover', 'background-position':'center center'}" >        
+        <div class="leftdiv">      
+            <div class="dropdown">
+                <button class="dropbtn">Leagues</button>
+                <div class="dropdown-content">
+                    <!-- <a href="onSelected('2022-2023/SP1')">Link 1</a> -->
+                    <a role="button" (click)="onSelected('2022-2023/SP1')">Spain</a>
+                    <a role="button" (click)="onSelected('2022-2023/SP2')">Spain 2</a>
+                    <a role="button" (click)="onSelected('2022-2023/ROU')">Romania</a>
+                    <a role="button" (click)="onSelected('2022-2023/POL')">Poland</a>
+                    <a role="button" (click)="onSelected('2022-2023/P1')">Portugal</a>
+                    <a role="button" (click)="onSelected('2022-2023/G1')">Greece</a>
+                    <a role="button" (click)="onSelected('2022-2023/CROA')">Croatia</a>
+                    <a role="button" (click)="onSelected('2022-2023/HUN')">Hungary</a>
+                    <a role="button" (click)="onSelected('2022-2023/COL')">Colombia</a>
+                    <a role="button" (click)="onSelected('2022-2023/CHIL')">Chile</a>
+                    <a role="button" (click)="onSelected('2022-2023/ESLOVENIA')">Slovenia</a>
+                    <a role="button" (click)="onSelected('2022-2023/LETONIA')">Latvia</a>
+                    <a role="button" (click)="onSelected('2022-2023/SERBIA')">Serbia</a>
+                    <a role="button" (click)="onSelected('2022-2023/AUSTRALIA')">Australia</a>
+                    <a role="button" (click)="onSelected('2022-2023/BULGARIA')">Bulgaria</a>
+                    <a role="button" (click)="onSelected('2022-2023/GIBRALTAR')">Gibraltar</a>
+                    <a role="button" (click)="onSelected('2022-2023/AZERBAIYAN')">Azerbaijan</a>
+                    <a role="button" (click)="onSelected('2022-2023/URU')">Uruguay</a>
+                    <a role="button" (click)="onSelected('2022-2023/HONGKONG')">Hong Kong</a>
+                    <a role="button" (click)="onSelected('2022-2023/INDIA')">India</a>
+                </div>
+            </div>  
+
+            <div class="dropdown">
+                <button class="dropbtn">Season</button>
+                <div class="dropdown-content">
+                    <!-- <a href="onSelected('2022-2023/SP1')">Link 1</a> -->
+                    <a role="button" (click)="onSelectedSeason('2022-2023')">2022-2023</a>
+                    <a role="button" (click)="onSelectedSeason('2021-2022')">2021-2022</a>
+                    <a role="button" (click)="onSelectedSeason('2020-2021')">2020-2021</a>
+                    <a role="button" (click)="onSelectedSeason('2019-2020')">2019-2020</a>
+                </div>
+            </div>  
+
+            <!-- <select #leagues (change)="onSelected(leagues.value)">                 -->
+                <!-- <option value="2022-2023/SP1">ESP</option>
+                <option value="2022-2023/SP2">ESP2 22-23</option>
+                <option value="2022-2023/ROU">**ROU 22-23</option> -->
+                <!-- <option value="2022-2023/POL">**POL 22-23</option>
+                <option value="2022-2023/P1">**POR 22-23</option>
+                <option value="2022-2023/G1">**GRE 22-23</option>
+                <option value="2022-2023/CROA">**CROA 22-23</option>
+                <option value="2022-2023/HUN">**HUN 22-23</option>
+                <option value="2022-2023/COL">**COL 22-23</option>
+                <option value="2022-2023/CHIL">**CHIL 22-23</option> -->
+                <!-- <option value="2022-2023/PAR">PAR 22-23</option> -->
+                <!-- <option value="2022-2023/ESLOVENIA">**ESLOVENIA 22-23</option>
+                <option value="2022-2023/LETONIA">**LETONIA 22-23</option>
+                <option value="2022-2023/SERBIA">**SERBIA 22-23</option> -->
+                <!-- <option value="2022-2023/AUSTRALIA">**AUSTRALIA 22-23</option>
+                <option value="2022-2023/BULGARIA">**BULGARIA 22-23</option>
+                <option value="2022-2023/GIBRALTAR">**GIBRALTAR 22-23</option>
+                <option value="2022-2023/AZERBAIYAN">**AZERBAIYAN 22-23</option>
+                <option value="2022-2023/URU">**URUGUAY 22-23</option> -->
+                <!-- <option value="2022-2023/HONGKONG">**HONGKONG 22-23</option>
+                <option value="2022-2023/INDIA">INDIA 22-23</option> -->
+                <!-- <option value="2022-2023/N1">* HOL 22-23</option>
+                <option value="2022-2023/SWZ">* SUI 22-23</option>
+                <option value="2022-2023/DNK">* DIN 22-23</option>
+                <option value="2022-2023/E0">ENG 22-23</option>
+                <option value="2022-2023/I1">ITA 22-23</option>
+                <option value="2022-2023/F1">FRA 22-23</option>
+                <option value="2022-2023/T1">TUR 22-23</option>
+                <option value="2022-2023/B1">*BEL 22-23</option>
+                <option value="2022/USA">USA 22-23</option>
+                <option value="2022-2023/BRA">BRA 22-23</option>
+                <option value="2022-2023/CHN">CHI 22-23</option>
+                <option value="2022/SWE">SUE 22-23</option> -->
+                <!-- <option value="2122/SP1">--------</option>    
+                        <option value="2122/SP1">ESP 21-22</option>     
+                        <option value="2122/SP2">ESP2 21-22</option>    
+                        <option value="2122/E0">ENG 21-22</option>
+                        <option value="2122/I1">ITA 21-22</option>
+                        <option value="2122/F1">FRA 21-22</option>
+                        <option value="2122/P1">POR 21-22</option>
+                        <option value="2122/N1">HOL 21-22</option>
+                        <option value="2122/G1">GRE 21-22</option>    
+                        <option value="2122/B1">BEL 21-22</option> -->
+            <!-- </select> -->
+            <!-- <select id="selectSeason" #season (change)="onSelectedSeason(season.value)">
+                <option value="2022-2023">2022-2023</option>
+                <option value="2021-2022">2021-2022</option>
+                <option value="2020-2021">2020-2021</option>
+                <option value="2019-2020">2019-2020</option>
+            </select> -->
+            <button type="button" (click)="updateCVSs()">Update CSVs</button>
+            <button (click)="onPress()">Compare</button>
+            <app-charts [league]="selectedLeague"></app-charts>   
+            <app-nextmatchinfo [league]="selectedLeague"></app-nextmatchinfo>
+        </div>
+        <div class="rightdiv">            
+            <app-filteringslicer [league]="selectedLeague"></app-filteringslicer> 
+            <app-fixtureinfo [league]="selectedLeague"></app-fixtureinfo>
+            <app-weekdaydrawinfo [league]="selectedLeague"></app-weekdaydrawinfo>
+        </div>        
+    </div>
+
+</span>   
+
+

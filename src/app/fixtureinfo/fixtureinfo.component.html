@@ -1,0 +1,33 @@
+    <!-- <li *ngFor="let prevYear of hasPreviousYearData">
+            <button  (click)="changeYear(prevYear)">{{prevYear}}</button>
+        </li> -->
+    {{lastUpdateDate}} {{lastUpdateMatch}} {{lastUpdateMatchResult}}
+
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet"> -->
+    <div class="ptable">
+        <!-- <h1 class="headin">Standings</h1> -->
+        <table>
+            <tr class="col">
+                <th>#</th>
+                <th>Team</th>
+                <th>Home</th>
+                <th>Away</th>
+            </tr>
+            <tr class="wpos" *ngFor="let fullDraw of fullDraws | keyvalue:returnZero; index as i">
+                <td>{{i+1}}</td>
+                <td>{{fullDraw.key}}</td>
+                <ng-container *ngFor="let homeItem of homeDraws | keyvalue">
+                    <ng-container *ngIf="homeItem.key == fullDraw.key">
+                        <td>{{homeItem.value}}</td>
+                    </ng-container>
+                </ng-container>
+                
+                <ng-container *ngFor="let awayItem of awayDraws | keyvalue">
+                    <ng-container *ngIf="fullDraw.key == awayItem.key">
+                        <td>{{awayItem.value}}</td>
+                    </ng-container>
+                </ng-container>
+            </tr>
+        </table>
+    </div>
