@@ -3,10 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
-const baseUrl = 'http://127.0.0.1:8000/netincome/';
-const baseUrlSeason = 'http://127.0.0.1:8000/netIncomeSelectedYear/';
-const UpdateCSVUrl = 'http://127.0.0.1:8000/UpdateCSVs/';
-const UpdateSelectedNDraws = 'http://127.0.0.1:8000/UpdateSelectedNDraws/';
+const baseUrl = 'api/netincome/';
+const baseUrlSeason = 'api/netIncomeSelectedYear/';
+const UpdateCSVUrl = 'api/UpdateCSVs/';
+const UpdateSelectedNDraws = 'api/UpdateSelectedNDraws/';
 
 @Injectable({
   providedIn: 'root'
