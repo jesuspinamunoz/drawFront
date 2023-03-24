@@ -58,6 +58,7 @@ export class AppComponent implements OnInit {
   azerbaiyan: any;
   hongkong: any;
   india: any;
+  peru: any;
   seasonYear: any;
 
 
@@ -90,6 +91,7 @@ export class AppComponent implements OnInit {
       this.azerbaiyan = response.azerbaiyan;      
       this.hongkong = response.hongkong;     
       this.india = response.india;
+      this.peru = response.peru;
       
 
       if (!this.alertShown) {
@@ -205,6 +207,10 @@ export class AppComponent implements OnInit {
     else if (value == '2022-2023/INDIA') {
       this.selectedLeague = this.india;
       this.league = 'INDIA';
+    }    
+    else if (value == '2022-2023/PERU') {
+      this.selectedLeague = this.peru;
+      this.league = 'PERU';
     }
 
   }
