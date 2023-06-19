@@ -1,10 +1,13 @@
-<!-- <div>
+<div>
     <canvas id="Income" height="200px" width="900px"></canvas>
-</div> -->
-<button (click)="resetZoom()">Reset Zoom</button>
-<div>
-    <canvas id="NoConsecutiveDraws" height="220px" width="900"></canvas>
 </div>
-<div>
-    <canvas id="drawsByFixture" height="220px" width="900px"></canvas>
+<button (click)="resetZoom()">Reset Zoom</button>
+
+<div [hidden]="!showInfoLeague">
+    <div>
+        <canvas id="NoConsecutiveDraws" height="220px" width="900"></canvas>
+    </div>
+    <div>
+        <canvas id="drawsByFixture" height="220px" width="900px"></canvas>
+    </div>
 </div>

@@ -26,24 +26,24 @@ export class YearcomparisonComponent implements OnInit {
 
   constructor(private service: BackConnService) { }
 
-  ngOnInit(): void {
-    this.service.netIncomeSelectedYear("2022-2023/" + this.leagueName ).subscribe(response => {
+  ngOnInit(): void {    
+    this.service.netIncomeSelectedYear("2022-2023/" + this.leagueName).subscribe(response => {
       this.league2223 = response.seasonYear;
-      this.service.netIncomeSelectedYear("2021-2022/" + this.leagueName ).subscribe(response => {
+      this.service.netIncomeSelectedYear("2021-2022/" + this.leagueName).subscribe(response => {
         this.league2122 = response.seasonYear;
-        this.service.netIncomeSelectedYear("2020-2021/" + this.leagueName ).subscribe(response => {
+        this.service.netIncomeSelectedYear("2020-2021/" + this.leagueName).subscribe(response => {
           this.league2021 = response.seasonYear;
-          this.service.netIncomeSelectedYear("2019-2020/" + this.leagueName ).subscribe(response => {
+          this.service.netIncomeSelectedYear("2019-2020/" + this.leagueName).subscribe(response => {
             this.league1920 = response.seasonYear;
-            this.service.netIncomeSelectedYear("2018-2019/" + this.leagueName ).subscribe(response => {
+            this.service.netIncomeSelectedYear("2018-2019/" + this.leagueName).subscribe(response => {
               this.league1819 = response.seasonYear;
-              this.service.netIncomeSelectedYear("2017-2018/" + this.leagueName ).subscribe(response => {
+              this.service.netIncomeSelectedYear("2017-2018/" + this.leagueName).subscribe(response => {
                 this.league1718 = response.seasonYear;
-                this.service.netIncomeSelectedYear("2016-2017/" + this.leagueName ).subscribe(response => {
+                this.service.netIncomeSelectedYear("2016-2017/" + this.leagueName).subscribe(response => {
                   this.league1617 = response.seasonYear;
-                  this.service.netIncomeSelectedYear("2015-2016/" + this.leagueName ).subscribe(response => {
+                  this.service.netIncomeSelectedYear("2015-2016/" + this.leagueName).subscribe(response => {
                     this.league1516 = response.seasonYear;
-                    this.service.netIncomeSelectedYear("2014-2015/" + this.leagueName ).subscribe(response => {
+                    this.service.netIncomeSelectedYear("2014-2015/" + this.leagueName).subscribe(response => {
                       this.league1415 = response.seasonYear;
                       this.OnChanges();
                     });
@@ -58,44 +58,44 @@ export class YearcomparisonComponent implements OnInit {
   }
 
   OnChanges() {
-    let maxArray: number = Math.max(this.league2223.NoDrawKeyArray.length, this.league2122.NoDrawKeyArray.length, this.league2021.NoDrawKeyArray.length, this.league1920.NoDrawKeyArray.length, this.league1819.NoDrawKeyArray.length, this.league1718.NoDrawKeyArray.length, this.league1617.NoDrawKeyArray.length, this.league1516.NoDrawKeyArray.length, this.league1415.NoDrawKeyArray.length)
+    let maxArray: number = Math.max(this.league2223.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league2122.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league2021.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1920.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1819.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1718.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1617.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1516.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1415.chart_noConsecutiveDraws_xAxis_matchNumber.length)
 
-    for(var i = this.league2223.NoDrawKeyArray.length + 1;i<=maxArray;i++) { 
-      this.league2223.NoDrawKeyArray.push(0);
-      this.league2223.NoDrawValueArray.push(0);
+    for(var i = this.league2223.chart_noConsecutiveDraws_xAxis_matchNumber.length + 1;i<=maxArray;i++) { 
+      this.league2223.chart_noConsecutiveDraws_xAxis_matchNumber.push(0);
+      this.league2223.chart_noConsecutiveDraws_yAxis_noDrawStreak.push(0);
     }   
-    for(var i = this.league2122.NoDrawKeyArray.length + 1;i<=maxArray;i++) { 
-      this.league2122.NoDrawKeyArray.push(0);
-      this.league2122.NoDrawValueArray.push(0);
+    for(var i = this.league2122.chart_noConsecutiveDraws_xAxis_matchNumber.length + 1;i<=maxArray;i++) { 
+      this.league2122.chart_noConsecutiveDraws_xAxis_matchNumber.push(0);
+      this.league2122.chart_noConsecutiveDraws_yAxis_noDrawStreak.push(0);
     }  
-    for(var i = this.league2021.NoDrawKeyArray.length + 1;i<=maxArray;i++) { 
-      this.league2021.NoDrawKeyArray.push(0);
-      this.league2021.NoDrawValueArray.push(0);
+    for(var i = this.league2021.chart_noConsecutiveDraws_xAxis_matchNumber.length + 1;i<=maxArray;i++) { 
+      this.league2021.chart_noConsecutiveDraws_xAxis_matchNumber.push(0);
+      this.league2021.chart_noConsecutiveDraws_yAxis_noDrawStreak.push(0);
     }  
-    for(var i = this.league1920.NoDrawKeyArray.length + 1;i<=maxArray;i++) { 
-      this.league1920.NoDrawKeyArray.push(0);
-      this.league1920.NoDrawValueArray.push(0);
+    for(var i = this.league1920.chart_noConsecutiveDraws_xAxis_matchNumber.length + 1;i<=maxArray;i++) { 
+      this.league1920.chart_noConsecutiveDraws_xAxis_matchNumber.push(0);
+      this.league1920.chart_noConsecutiveDraws_yAxis_noDrawStreak.push(0);
     }  
     
-    for(var i = this.league1819.NoDrawKeyArray.length + 1;i<=maxArray;i++) { 
-      this.league1819.NoDrawKeyArray.push(0);
-      this.league1819.NoDrawValueArray.push(0);
+    for(var i = this.league1819.chart_noConsecutiveDraws_xAxis_matchNumber.length + 1;i<=maxArray;i++) { 
+      this.league1819.chart_noConsecutiveDraws_xAxis_matchNumber.push(0);
+      this.league1819.chart_noConsecutiveDraws_yAxis_noDrawStreak.push(0);
     }  
-    for(var i = this.league1718.NoDrawKeyArray.length + 1;i<=maxArray;i++) { 
-      this.league1718.NoDrawKeyArray.push(0);
-      this.league1718.NoDrawValueArray.push(0);
+    for(var i = this.league1718.chart_noConsecutiveDraws_xAxis_matchNumber.length + 1;i<=maxArray;i++) { 
+      this.league1718.chart_noConsecutiveDraws_xAxis_matchNumber.push(0);
+      this.league1718.chart_noConsecutiveDraws_yAxis_noDrawStreak.push(0);
     }  
-    for(var i = this.league1617.NoDrawKeyArray.length + 1;i<=maxArray;i++) { 
-      this.league1617.NoDrawKeyArray.push(0);
-      this.league1617.NoDrawValueArray.push(0);
+    for(var i = this.league1617.chart_noConsecutiveDraws_xAxis_matchNumber.length + 1;i<=maxArray;i++) { 
+      this.league1617.chart_noConsecutiveDraws_xAxis_matchNumber.push(0);
+      this.league1617.chart_noConsecutiveDraws_yAxis_noDrawStreak.push(0);
     }  
-    for(var i = this.league1516.NoDrawKeyArray.length + 1;i<=maxArray;i++) { 
-      this.league1516.NoDrawKeyArray.push(0);
-      this.league1516.NoDrawValueArray.push(0);
+    for(var i = this.league1516.chart_noConsecutiveDraws_xAxis_matchNumber.length + 1;i<=maxArray;i++) { 
+      this.league1516.chart_noConsecutiveDraws_xAxis_matchNumber.push(0);
+      this.league1516.chart_noConsecutiveDraws_yAxis_noDrawStreak.push(0);
     }  
-    for(var i = this.league1415.NoDrawKeyArray.length + 1;i<=maxArray;i++) { 
-      this.league1415.NoDrawKeyArray.push(0);
-      this.league1415.NoDrawValueArray.push(0);
+    for(var i = this.league1415.chart_noConsecutiveDraws_xAxis_matchNumber.length + 1;i<=maxArray;i++) { 
+      this.league1415.chart_noConsecutiveDraws_xAxis_matchNumber.push(0);
+      this.league1415.chart_noConsecutiveDraws_yAxis_noDrawStreak.push(0);
     }  
     
 
@@ -107,10 +107,10 @@ export class YearcomparisonComponent implements OnInit {
     this.noConsecutiveDrawsComparison = new Chart("noConsecutiveDrawsComparison", {
       type: 'bar',
       data: {
-        labels: this.league2223.NoDrawKeyArray,
+        labels: this.league2223.chart_noConsecutiveDraws_xAxis_matchNumber,
         datasets: [{
           label: '22-23',
-          data: this.league2223.NoDrawValueArray,
+          data: this.league2223.chart_noConsecutiveDraws_yAxis_noDrawStreak,
           backgroundColor: 'rgba(255, 99, 132, 0.5)',
           borderColor: 'rgba(255, 99, 132, 1)',
           borderWidth: 1
@@ -118,7 +118,7 @@ export class YearcomparisonComponent implements OnInit {
         {
           label: '21-22',
           type: 'line',
-          data: this.league2122.NoDrawValueArray,
+          data: this.league2122.chart_noConsecutiveDraws_yAxis_noDrawStreak,
           backgroundColor: 'rgba(0,19,255, 1)',
           borderColor: 'rgba(0,19,255, 1)',
           borderWidth: 3,
@@ -127,7 +127,7 @@ export class YearcomparisonComponent implements OnInit {
         },
         {
           label: '20-21',
-          data: this.league2021.NoDrawValueArray,
+          data: this.league2021.chart_noConsecutiveDraws_yAxis_noDrawStreak,
           backgroundColor: 'rgba(80, 0, 30, 1)',
           borderColor: 'rgba(80, 0, 30, 1, 1)',
           borderWidth: 3,
@@ -137,7 +137,7 @@ export class YearcomparisonComponent implements OnInit {
         {
           label: '19-20',          
           type: 'line',
-          data: this.league1920.NoDrawValueArray,
+          data: this.league1920.chart_noConsecutiveDraws_yAxis_noDrawStreak,
           backgroundColor: 'rgba(58, 255, 0, 1)',
           borderColor: 'rgba(58, 255, 0, 1)',
           borderWidth: 1,
@@ -146,7 +146,7 @@ export class YearcomparisonComponent implements OnInit {
         },        
         {
           label: '18-19',
-          data: this.league1819.NoDrawValueArray,
+          data: this.league1819.chart_noConsecutiveDraws_yAxis_noDrawStreak,
           backgroundColor: 'rgba(58, 5, 90, 1)',
           borderColor: 'rgba(58, 5, 90, 1)',
           borderWidth: 3,
@@ -155,7 +155,7 @@ export class YearcomparisonComponent implements OnInit {
         },     
         {
           label: '17-18',
-          data: this.league1718.NoDrawValueArray,
+          data: this.league1718.chart_noConsecutiveDraws_yAxis_noDrawStreak,
           backgroundColor: 'rgba(158, 55, 190, 1)',
           borderColor: 'rgba(158, 55, 190, 1)',
           borderWidth: 3,
@@ -164,7 +164,7 @@ export class YearcomparisonComponent implements OnInit {
         },
         {
           label: '16-17',
-          data: this.league1617.NoDrawValueArray,
+          data: this.league1617.chart_noConsecutiveDraws_yAxis_noDrawStreak,
           backgroundColor: 'rgba(40, 50, 210, 1)',
           borderColor: 'rgba(40, 50, 210, 1)',
           borderWidth: 3,
@@ -173,7 +173,7 @@ export class YearcomparisonComponent implements OnInit {
         },
         {
           label: '15-16',
-          data: this.league1516.NoDrawValueArray,
+          data: this.league1516.chart_noConsecutiveDraws_yAxis_noDrawStreak,
           backgroundColor: 'rgba(140, 150, 210, 1)',
           borderColor: 'rgba(140, 150, 210, 1)',
           borderWidth: 3,
@@ -182,7 +182,7 @@ export class YearcomparisonComponent implements OnInit {
         },
         {
           label: '14-15',
-          data: this.league1415.NoDrawValueArray,
+          data: this.league1415.chart_noConsecutiveDraws_yAxis_noDrawStreak,
           backgroundColor: 'rgba(70, 75, 105, 1)',
           borderColor: 'rgba(70, 75, 105, 1)',
           borderWidth: 3,

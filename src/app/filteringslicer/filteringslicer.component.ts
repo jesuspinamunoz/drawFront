@@ -14,15 +14,21 @@ export class FilteringslicerComponent implements OnInit {
   isLimitDrawUpdated: any;
   
   @Input() league: any;
-  ngOnInit(): void {      
-    this.leagueName = this.league.league;
-    this.leagueAlertLimit = this.league.limitAlertDraws;
-    this.isLimitDrawUpdated = false;
+  ngOnInit(): void {   
+    if(this.league)
+    {   
+      this.leagueName = this.league.league;
+      this.leagueAlertLimit = this.league.limitAlertDraws;
+      this.isLimitDrawUpdated = false;
+    }
   }
   ngOnChanges() {        
-    this.leagueName = this.league.league;
-    this.leagueAlertLimit = this.league.limitAlertDraws;
-    this.isLimitDrawUpdated = false;
+    if(this.league)
+    {
+      this.leagueName = this.league.league;
+      this.leagueAlertLimit = this.league.limitAlertDraws;
+      this.isLimitDrawUpdated = false;
+    }
   }
 
   updateNDraws(value: string): void {

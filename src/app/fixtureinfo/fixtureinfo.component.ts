@@ -20,12 +20,15 @@ export class FixtureinfoComponent implements OnInit {
   ngOnInit(): void {
   }
   ngOnChanges() {
-    this.lastUpdateDate = this.league.lastUpdateDate;
-    this.lastUpdateMatch = this.league.lastUpdateMatch;
-    this.lastUpdateMatchResult = this.league.lastUpdateMatchResult;
-    this.homeDraws = this.league.homeDraws;
-    this.awayDraws = this.league.awayDraws;
-    this.fullDraws = this.league.fullDraws;
+    if(this.league)
+    {
+      this.lastUpdateDate = this.league.lastUpdateDate;
+      this.lastUpdateMatch = this.league.lastUpdateMatch;
+      this.lastUpdateMatchResult = this.league.lastUpdateMatchResult;
+      this.homeDraws = this.league.homeDraws;
+      this.awayDraws = this.league.awayDraws;
+      this.fullDraws = this.league.fullDraws;
+    }
   }
   returnZero() {
     return 0
