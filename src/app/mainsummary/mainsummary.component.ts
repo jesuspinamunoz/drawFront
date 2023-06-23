@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 
-import { BackConnService } from 'src/app/back-conn.service'
+import { BackConnService } from 'src/app/back-conn.service';
 import zoomPlugin from 'chartjs-plugin-zoom';
 import Chart from 'chart.js/auto/auto.mjs';
 import { Router } from '@angular/router';
@@ -30,17 +30,13 @@ export class MainsummaryComponent implements OnInit {
 
   league: string = '';
   responseJson: any;
-  leagues: { [clave: string]: any } = {};
   alerts: string[] = [];
   userNetMoney: any;
   alertShown: boolean = false;
   selectedLeague: any;
   userNetMoneySelectedObject: any;
   showInfoLeague = false;
-  display = false;
 
-
-  sortedData: any;
   constructor(private service: BackConnService, private router: Router) { }
 
   ngOnInit(): void {
@@ -50,29 +46,7 @@ export class MainsummaryComponent implements OnInit {
   goToMainPage() {
     this.league = 'SP1';
     this.service.getIncomeValues().subscribe(response => {
-      console.log(response);
       this.responseJson = response;
-      this.leagues['SP1'] = response.España;
-      this.leagues['SP2'] = response.España2;
-      this.leagues['ROU'] = response.Rumania;
-      this.leagues['POL'] = response.Polonia;
-      this.leagues['P1'] = response.Portugal;
-      this.leagues['G1'] = response.Grecia;
-      this.leagues['HUN'] = response.Hungria;
-      this.leagues['COL'] = response.Colombia;
-      this.leagues['CHIL'] = response.Chile;
-      this.leagues['CROA'] = response.Eslovenia;
-      this.leagues['ESLOVENIA'] = response.Paraguay;
-      this.leagues['PAR'] = response.Croatia;
-      this.leagues['LETONIA'] = response.Letonia;
-      this.leagues['SERBIA'] = response.Uruguay;
-      this.leagues['AUSTRALIA'] = response.Serbia;
-      this.leagues['BULGARIA'] = response.Australia;
-      this.leagues['GIBRALTAR'] = response.Bulgaria;
-      this.leagues['AZERBAIYAN'] = response.Gibraltar;
-      this.leagues['HONGKONG'] = response.Azerbaiyan;
-      this.leagues['INDIA'] = response.Hongkong;
-      this.leagues['PERU'] = response.India;
       this.alerts = response.alert;
       this.userNetMoney = response.userNetMoney;
 
@@ -107,48 +81,7 @@ export class MainsummaryComponent implements OnInit {
     this.ngOnChanges();
   }
 
-  onSelected(value: string): void {
-    //restart selected year to 2022-2023
-    const select = document.getElementById('selectSeason') as HTMLSelectElement | null;
-    if (select != null) {
-      select.selectedIndex = 0;
-    }
-    // get the json league for the selected league from selector
-    this.league = value;
-    this.selectedLeague = this.leagues[value];
-    this.userNetMoneySelectedObject = this.userNetMoney.find((objeto: userNetMoney) => objeto.LeagueID === value);
-    this.showInfoLeague = true;
-  }
-
-  onSelectedSeason(value: string): void {
-    if (value.includes('2022-2023')) {
-      this.onSelected(this.league);
-    }
-    else {
-      this.service.netIncomeSelectedYear(value + "/" + this.league).subscribe(response => {
-        this.selectedLeague = response.seasonYear;
-        console.log(response.seasonYear)
-      },
-        (error: HttpErrorResponse) => {
-          const statusCode = error.status;
-          this.service.setLoggedIn(false);
-          this.router.navigate(["login"]);
-        })
-    }
-  }
-
-  updateCVSs(): void {
-    const el = document.getElementById('loader');
-    const hole = document.getElementById('holeModal');
-    if (el != null && hole != null) {
-      // ✅ Shows element if hidden
-      el.style.display = 'block';
-      // ✅ Shows element if hidden
-      hole.style.filter = "grayscale(100%)";
-      hole.style.opacity = "0.3";
-    }
-  }
-
+  
   logout() {
     localStorage.setItem('token', '');
     this.router.navigate(["login"]);
@@ -157,7 +90,6 @@ export class MainsummaryComponent implements OnInit {
   ngOnChanges() {
     if (this.responseJson) {
       const keys = Object.keys(this.responseJson);
-      console.log(keys);
 
       // Evitar leer dos keys que no son ligas como 'Alert' y 'userNetMoney'
       for (let i = 0; i < keys.length - 2; i++) {
@@ -209,7 +141,6 @@ export class MainsummaryComponent implements OnInit {
     }
   }
 
-
   getKey(obj: any): string {
     return Object.keys(obj)[0];
   }
@@ -219,10 +150,7 @@ export class MainsummaryComponent implements OnInit {
     return obj[key];
   }
 
-  compareYears() {
-    this.display = !this.display;
-  }
-
+  
   personalData(){
     this.service.getMyPersonalData().subscribe(response => {console.log(response), this.router.navigate(["personalData"])});
   }
