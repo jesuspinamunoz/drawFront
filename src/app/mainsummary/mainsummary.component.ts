@@ -44,8 +44,7 @@ export class MainsummaryComponent implements OnInit {
   }
 
   goToMainPage() {
-    this.league = 'SP1';
-    this.service.getIncomeValues().subscribe(response => {
+    this.service.getMainSummary().subscribe(response => {
       this.responseJson = response;
       this.alerts = response.alert;
       this.userNetMoney = response.userNetMoney;

@@ -11,6 +11,10 @@ const LOGIN = 'api/login/';
 const LOGOUT = 'api/logout/';
 const PERSONALDATA = 'api/myPersonalData/';
 
+const MAINSUMMARY = "api/mainSummary/";
+
+const LEAGUESUMMARY = "api/leagueSummary/";
+
 
 interface LoginResponse {
   responseStatus: string;
@@ -30,6 +34,18 @@ export class BackConnService {
   accessToken : string = "";
   userId: string = "";
   authorizedUser: boolean = false;
+
+  
+
+  getMainSummary() {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.get<any>(MAINSUMMARY, { headers });
+  }
+
+  getLeagueSummary(_leagueName: string) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.get<any>(LEAGUESUMMARY + _leagueName, { headers });
+  }
 
 
   getIncomeValues() {

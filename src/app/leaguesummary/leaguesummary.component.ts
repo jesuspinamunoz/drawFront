@@ -25,7 +25,7 @@ export class LeaguesummaryComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.leagueName = params.get('data') as string;
-      this.service.getIncomeValues().subscribe(response => {
+      this.service.getLeagueSummary(this.leagueName).subscribe(response => {
         this.selectedLeague = response[this.leagueName];
         this.userNetMoneySelectedObject = response.userNetMoney.find((objeto: userNetMoney) => objeto.LeagueID === 'allLeagues')
       })        
