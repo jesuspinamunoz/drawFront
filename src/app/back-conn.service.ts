@@ -44,9 +44,8 @@ export class BackConnService {
 
   getLeagueSummary(_leagueName: string) {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this.http.get<any>(LEAGUESUMMARY + _leagueName, { headers });
+    return this.http.get<any>(LEAGUESUMMARY + _leagueName + "/", { headers });
   }
-
 
   getIncomeValues() {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
