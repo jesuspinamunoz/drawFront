@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BackConnService } from 'src/app/back-conn.service';
 
 interface userNetMoney {
-  LeagueID: string;
+  LeagueName: string;
   date_xAxis: any[];
   netMoney_yAxis: any[];
 }
@@ -27,7 +27,7 @@ export class LeaguesummaryComponent implements OnInit {
       this.leagueName = params.get('data') as string;
       this.service.getLeagueSummary(this.leagueName).subscribe(response => {
         this.selectedLeague = response[this.leagueName];
-        this.userNetMoneySelectedObject = response.userNetMoney.find((objeto: userNetMoney) => objeto.LeagueID === 'allLeagues')
+        this.userNetMoneySelectedObject = response.userNetMoney.find((objeto: userNetMoney) => objeto.LeagueName === this.leagueName)
       })        
     });
   }

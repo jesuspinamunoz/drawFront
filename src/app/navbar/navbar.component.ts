@@ -26,7 +26,12 @@ export class NavbarComponent implements OnInit {
       this.onSelected(this.league);
     }
     else {
+
+      console.log("-> nav bar onSelectedSeason");
+      console.log(this.league);
       this.service.netIncomeSelectedYear(value + "/" + this.league).subscribe(response => {
+        this.league = value;
+        this.router.navigate(["leagueSummary", { data: value }]);
       },
         (error: HttpErrorResponse) => {
           const statusCode = error.status;
