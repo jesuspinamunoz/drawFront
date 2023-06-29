@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BackConnService } from 'src/app/back-conn.service';
 
 @Component({
   selector: 'app-personaldata',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonaldataComponent implements OnInit {
 
-  constructor() { }
+  username:string = "";
+  password:string = "";
+  startbettingmoney:string = "";
+  telegramHash:string = "";
+  constructor(private route: ActivatedRoute, private service: BackConnService) { }
 
   ngOnInit(): void {
+    this.service.getMyPersonalData().subscribe(response => {
+      this.username = response.username;      
+      this.password = response.password; 
+      this.startbettingmoney = response.startbettingmoney; 
+      this.telegramHash = response.telegramHash; 
+    }) 
   }
 
 }
