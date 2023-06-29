@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   constructor(private service: BackConnService, private router: Router) { }
 
   ngOnInit(): void {
-    console.log("login component");
   }
 
   login(): void {
@@ -27,7 +26,6 @@ export class LoginComponent implements OnInit {
         this.router.navigate([""]);
     },
     (error: HttpErrorResponse) => {
-      console.log("login error")
       this.router.navigate(["login"]);
     });
   }

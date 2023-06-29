@@ -10,6 +10,7 @@ const UpdateSelectedNDraws = 'api/UpdateSelectedNDraws/';
 const LOGIN = 'api/login/';
 const LOGOUT = 'api/logout/';
 const PERSONALDATA = 'api/myPersonalData/';
+const UPDATEPERSONALDATA = 'api/updateMyPersonalData/';
 
 const MAINSUMMARY = "api/mainSummary/";
 
@@ -104,6 +105,18 @@ export class BackConnService {
   {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.http.get<any>(PERSONALDATA, { headers });
+  }
+
+  updateMyPersonalData(_username: string, _password: string, _startbettingmoney: string, _telegramHash: string)
+  {
+    const personalDataToUpdate = {
+      username: _username,
+      password: _password,
+      startbettingmoney: _startbettingmoney,
+      telegramHash: _telegramHash,
+    };
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.post<any>(UPDATEPERSONALDATA, personalDataToUpdate, { headers } );
   }
 
   getAccessToken() {

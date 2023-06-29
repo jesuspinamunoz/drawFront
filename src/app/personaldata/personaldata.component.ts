@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { BackConnService } from 'src/app/back-conn.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class PersonaldataComponent implements OnInit {
   password:string = "";
   startbettingmoney:string = "";
   telegramHash:string = "";
-  constructor(private route: ActivatedRoute, private service: BackConnService) { }
+  constructor(private router: Router, private service: BackConnService) { }
 
   ngOnInit(): void {
     this.service.getMyPersonalData().subscribe(response => {
@@ -22,6 +22,18 @@ export class PersonaldataComponent implements OnInit {
       this.startbettingmoney = response.startbettingmoney; 
       this.telegramHash = response.telegramHash; 
     }) 
+  }
+  updatePersonalData(): void {
+
+    console.log(this.username);
+    console.log(this.password);
+    console.log(this.startbettingmoney);
+    console.log(this.telegramHash);
+
+    this.service.updateMyPersonalData(this.username, this.password, this.startbettingmoney, this.telegramHash).subscribe(response => { 
+      this.router.navigate([""]);
+    })
+
   }
 
 }

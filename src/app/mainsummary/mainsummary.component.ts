@@ -149,10 +149,8 @@ export class MainsummaryComponent implements OnInit {
     return obj[key];
   }
 
-  
-  personalData(){
-    this.service.getMyPersonalData().subscribe(response => {console.log(response), this.router.navigate(["personalData"])});
+  personalData(): void{
+    this.router.navigate(["personalData"]);
   }
-
-
+  
 }
