@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="es">
@@ -13,22 +12,21 @@
 </head>
 
 <body>
-<app-navbar></app-navbar>
+    <app-navbar></app-navbar>
 
 
-{{leagueName}}
-<div *ngIf="display">
-    <app-yearcomparison [leagueName]="leagueName"></app-yearcomparison>
-</div>
+    <div *ngIf="display">
+        <app-yearcomparison [leagueName]="leagueName"></app-yearcomparison>
+    </div>
 
 
-
-<button type="button" (click)="updateCVSs()">Update CSVs</button>
-<div></div>
-<button type="button" (click)="compareYears()" style="margin-right: 10px;">Compare</button>
-<app-charts [league]="selectedLeague" [usersNetMoney]="userNetMoneySelectedObject"  [showInfoLeague]="true"></app-charts>
-<app-filteringslicer [league]="selectedLeague"></app-filteringslicer>
-<app-fixtureinfo [league]="selectedLeague"></app-fixtureinfo>
-<app-weekdaydrawinfo [league]="selectedLeague"></app-weekdaydrawinfo>
+    <button type="button" (click)="updateCVSs()">Update CSVs</button>
+    <div></div>
+    <button type="button" (click)="compareYears()" style="margin-right: 10px;">Compare</button>
+    <app-charts [league]="selectedLeague" [usersNetMoney]="userNetMoneySelectedObject"
+        [showInfoLeague]="true"></app-charts>
+    <app-filteringslicer [league]="selectedLeague"></app-filteringslicer>
+    <app-fixtureinfo [league]="selectedLeague"></app-fixtureinfo>
+    <app-weekdaydrawinfo [league]="selectedLeague"></app-weekdaydrawinfo>
 
 </body>

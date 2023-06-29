@@ -89,6 +89,8 @@ export class ChartsComponent implements OnInit {
     {
       if(this.league)
       {
+        console.log("chats-> ");
+    console.log(this.league.chart_drawsByFixture_xAxis_weekNumber);
         this.noConsecutiveDraws = new Chart("NoConsecutiveDraws", {
           type: 'bar',
           data: {
