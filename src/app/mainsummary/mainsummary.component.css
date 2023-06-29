@@ -1,9 +1,8 @@
 * {
-	font-family: Fjalla One;
+	font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	margin: 0;
 	border: 0;
 	padding: 0;
-	color: rgb(10, 205, 249);
 }
 
 html {
@@ -13,7 +12,7 @@ html {
 .ptable table {
 	/* margin: 0px auto; */
 	border-collapse: collapse;
-	width: 40%;
+	
 	/* height: 10%; */
 }
 
@@ -25,21 +24,21 @@ th,
 td {
 	padding: 1px;
 	font-weight: bold;
-	border: solid rgb(198, 19, 19);
+	border: solid rgb(255, 255, 255);
 	height: 1px;
 }
 
 th {
 	background-color: black;
-	color: #ffe221;
+	color: #ffffff;
 	margin: 1px;
-	border: solid rgb(198, 19, 19);
+	border: solid rgb(255, 255, 255);
 }
 
 .headin {
 	text-align: center;
 	text-decoration: none;
-	color: #ffe221;
+	color: #fbfbfb;
 	margin: 30px;
 	display: block;
 }
@@ -83,18 +82,15 @@ table .col {
 }
 
 
-.leftdiv
-{
-  float: left;
-}
+
 .rightdiv
 {
   float: center-right;
 }
 div{
   padding : 1%;
-  color: rgb(245, 16, 16);
-  background-color: 009900;
+  color: rgb(253, 253, 253);
+  background-color:none;
   width: (auto/2)px;
   /* border: solid rgb(198, 19, 19); */
 }
@@ -146,7 +142,7 @@ nav li:hover>ul{
 }
 
   .tabla {
-	width: 100%;
+	width: 200px;
 	border-collapse: collapse;
 }
 
@@ -166,14 +162,50 @@ nav li:hover>ul{
 }
 
 body {
+	padding: 20px ;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     height: 100vh;
-    display: flex;
+    display: block;
     /* align-items: center; */
     justify-content: center;
-    margin: 0px;
-    background-image: url("src/assets/FondoPrincipal.png");
-    background-size: contain;
-    background-position: center;
-    background-size: 100% 100%;
+    margin: 0px; 
+  
+}
+
+header {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.botton__container {
+	
+	color: #000;
+	border: solid 1px black;
+	border-radius: 8px;
+	background-color: rgb(229, 229, 229);
+	text-align: center;
+
+}
+main {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+.navbar__div {
+	
+	
+}
+
+.container__principal
+{
+display: flex;
+flex-direction: column;
+width: 100%;
+height: 80%;
+}
+
+.tablas {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
