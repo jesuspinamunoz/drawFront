@@ -1,5 +1,39 @@
+.cuadro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--navMenuWidth);
+    height: 100vh;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Centra verticalmente los elementos */
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+	  margin-top: 10px;
+    background-image: url('src/assets/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.totalMoneyText{  
+  margin-top: 10px;
+	font-size: 12px;
+}
+
+
+
+
+
 
 .dropdown{
+	margin-left: 320px;
 	display: inline-block;
 	position: relative;
 }

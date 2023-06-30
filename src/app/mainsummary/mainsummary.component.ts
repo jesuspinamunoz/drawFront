@@ -1,11 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-
-
 import { BackConnService } from 'src/app/back-conn.service';
 import zoomPlugin from 'chartjs-plugin-zoom';
 import Chart from 'chart.js/auto/auto.mjs';
 import { Router } from '@angular/router';
+
 
 interface userNetMoney {
   LeagueID: string;

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BackConnService } from 'src/app/back-conn.service'
 import { HttpErrorResponse } from '@angular/common/http';
+import { constants } from 'src/app/constants';
+
+document.documentElement.style.setProperty('--navMenuWidth', constants.navMenuWidth);
 
 @Component({
   selector: 'app-navbar',
