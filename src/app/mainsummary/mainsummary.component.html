@@ -12,61 +12,77 @@
 </head>
 
 <body>
-    <button type="button" (click)="logout()">LogOut</button>
-    <div></div>
-    <button type="button" (click)="personalData()">Me personal Data</button>
-
-    
-
-    <div class="leftdiv">
-        <app-navbar></app-navbar>
-
-        <app-charts [league]="selectedLeague" [usersNetMoney]="userNetMoneySelectedObject"  [showInfoLeague]="false"></app-charts>
-        <div class="tabla">
-            <table>
-                <tr class="col">
-                    <th>#</th>
-                    <th>Liga</th>
-                    <th>% Empates</th>
-                </tr>
-                <tr class="wpos" *ngFor="let item of leaguesDrawPercentaje | keyvalue; index as i">
-                    <td>{{i+1}}</td>
-                    <td>{{getKey(item.value)}}</td>
-                    <td>{{getValue(item.value)}}</td>
-                </tr>
-            </table>
+    <header>
+        <div class="navbar__div">
+            <app-navbar></app-navbar>
         </div>
-
-        <div class="ptable">
-            <table>
-                <tr class="col">
-                    <th>#</th>
-                    <th>Liga</th>
-                    <th>Actual Racha</th>
-                </tr>
-                <tr class="wpos" *ngFor="let item of leaguesNoDrawStreak | keyvalue; index as i">
-                    <td>{{i+1}}</td>
-                    <td>{{getKey(item.value)}}</td>
-                    <td>{{getValue(item.value)}}</td>
-                </tr>
-            </table>
+        <div class="bottons">
+            <div class="botton__container">
+                <button type="button" (click)="logout()">LogOut</button>
+            </div>
+            <div class="botton__container">
+                <button type="button" (click)="personalData()">Me personal Data</button>
+            </div>
         </div>
+       
 
-        <div class="ptable">
-            <table>
-                <tr class="col">
-                    <th>#</th>
-                    <th>Liga</th>
-                    <th>Balance en €</th>
-                </tr>
-                <tr class="wpos" *ngFor="let item of leaguesNetIncome | keyvalue; index as i">
-                    <td>{{i+1}}</td>
-                    <td>{{getKey(item.value)}}</td>
-                    <td>{{getValue(item.value)}}</td>
-                </tr>
-            </table>
+    </header>
+
+
+    <main>
+        <div class="container__principal">
+
+
+            <app-charts [league]="selectedLeague" [usersNetMoney]="userNetMoneySelectedObject"
+                [showInfoLeague]="false"></app-charts>
+        <div class="tablas">
+            <div class="tabla">
+                <table>
+                    <tr class="col">
+                        <th>#</th>
+                        <th>Liga</th>
+                        <th>% Empates</th>
+                    </tr>
+                    <tr class="wpos" *ngFor="let item of leaguesDrawPercentaje | keyvalue; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{getKey(item.value)}}</td>
+                        <td>{{getValue(item.value)}}</td>
+                    </tr>
+                </table>
+            </div>
+        
+            <div class="ptable">
+                <table>
+                    <tr class="col">
+                        <th>#</th>
+                        <th>Liga</th>
+                        <th>Actual Racha</th>
+                    </tr>
+                    <tr class="wpos" *ngFor="let item of leaguesNoDrawStreak | keyvalue; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{getKey(item.value)}}</td>
+                        <td>{{getValue(item.value)}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ptable">
+                <table>
+                    <tr class="col">
+                        <th>#</th>
+                        <th>Liga</th>
+                        <th>Balance en €</th>
+                    </tr>
+                    <tr class="wpos" *ngFor="let item of leaguesNetIncome | keyvalue; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{getKey(item.value)}}</td>
+                        <td>{{getValue(item.value)}}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
-    </div>
+        </div>
+    </main>
 </body>
 
 
