@@ -88,3 +88,30 @@
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {background-color: #d000ff;}
+
+
+.cuadro__iconos {
+  padding: 10px;
+  margin-top: 20px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+  height: 90%;
+}
+
+.cuadro__iconos__icono {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100px;
+ 
+  height: 100px;
+  background-color: aliceblue;
+}
+
+img {
+  max-width: 100%;
+}

@@ -174,7 +174,7 @@ body {
 header {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content:flex-end;
 }
 .botton__container {
 	
@@ -192,7 +192,8 @@ main {
     margin-left: var(--navMenuWidth); 
 }
 .navbar__div {
-	
+	display: flex;
+
 	
 }
 
