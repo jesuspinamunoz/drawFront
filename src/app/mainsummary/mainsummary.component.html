@@ -12,75 +12,75 @@
 </head>
 
 <body>
-    <header>
-        <div class="navbar__div">
-            <app-navbar></app-navbar>
-        </div>
-        <div class="bottons">
-            <div class="botton__container">
-                <button type="button" (click)="logout()">LogOut</button>
-            </div>
-            <div class="botton__container">
-                <button type="button" (click)="personalData()">Me personal Data</button>
-            </div>
-        </div>
-       
-
-    </header>
-
-
     <main>
+        <div class="button-container">
+            <button class="button" (click)="showTotalProfit()">Beneficio Total</button>
+            <button class="button" (click)="showLeagueProfit()">Beneficio x Liga</button>
+            <button class="button" (click)="showCurrentStrike()">Actual Racha de cada liga </button>
+            <button class="button" (click)="showLeagueStats()">liga stats </button>
+          </div>
+          
         <div class="container__principal">
 
-
-            <app-charts [league]="selectedLeague" [usersNetMoney]="userNetMoneySelectedObject"
-                [showInfoLeague]="false"></app-charts>
-        <div class="tablas">
-            <div class="tabla">
-                <table>
-                    <tr class="col">
-                        <th>#</th>
-                        <th>Liga</th>
-                        <th>% Empates</th>
-                    </tr>
-                    <tr class="wpos" *ngFor="let item of leaguesDrawPercentaje | keyvalue; index as i">
-                        <td>{{i+1}}</td>
-                        <td>{{getKey(item.value)}}</td>
-                        <td>{{getValue(item.value)}}</td>
-                    </tr>
-                </table>
-            </div>
-        
-            <div class="ptable">
-                <table>
-                    <tr class="col">
-                        <th>#</th>
-                        <th>Liga</th>
-                        <th>Actual Racha</th>
-                    </tr>
-                    <tr class="wpos" *ngFor="let item of leaguesNoDrawStreak | keyvalue; index as i">
-                        <td>{{i+1}}</td>
-                        <td>{{getKey(item.value)}}</td>
-                        <td>{{getValue(item.value)}}</td>
-                    </tr>
-                </table>
+            
+            <div [hidden]="!totalProfit">
+                <app-charts [league]="selectedLeague" [usersNetMoney]="userNetMoneySelectedObject"
+                    [showInfoLeague]="false"></app-charts>
             </div>
 
-            <div class="ptable">
-                <table>
-                    <tr class="col">
-                        <th>#</th>
-                        <th>Liga</th>
-                        <th>Balance en €</th>
-                    </tr>
-                    <tr class="wpos" *ngFor="let item of leaguesNetIncome | keyvalue; index as i">
-                        <td>{{i+1}}</td>
-                        <td>{{getKey(item.value)}}</td>
-                        <td>{{getValue(item.value)}}</td>
-                    </tr>
-                </table>
+            
+            <div class="tablas">
+                <div [hidden]="!leagueStats">
+                    <div class="tabla">
+                        <table>
+                            <tr class="col">
+                                <th>#</th>
+                                <th>Liga</th>
+                                <th>% Empates</th>
+                            </tr>
+                            <tr class="wpos" *ngFor="let item of leaguesDrawPercentaje | keyvalue; index as i">
+                                <td>{{i+1}}</td>
+                                <td>{{getKey(item.value)}}</td>
+                                <td>{{getValue(item.value)}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div [hidden]="!currentStrike">
+                    <div class="ptable">
+                        <table>
+                            <tr class="col">
+                                <th>#</th>
+                                <th>Liga</th>
+                                <th>Actual Racha</th>
+                            </tr>
+                            <tr class="wpos" *ngFor="let item of leaguesNoDrawStreak | keyvalue; index as i">
+                                <td>{{i+1}}</td>
+                                <td>{{getKey(item.value)}}</td>
+                                <td>{{getValue(item.value)}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div [hidden]="!leagueProfit">
+                    <div class="ptable">                    
+                        <table>
+                            <tr class="col">
+                                <th>#</th>
+                                <th>Liga</th>
+                                <th>Balance en €</th>
+                            </tr>
+                            <tr class="wpos" *ngFor="let item of leaguesNetIncome | keyvalue; index as i">
+                                <td>{{i+1}}</td>
+                                <td>{{getKey(item.value)}}</td>
+                                <td>{{getValue(item.value)}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
         </div>
     </main>
 </body>

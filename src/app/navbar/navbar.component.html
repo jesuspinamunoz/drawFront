@@ -9,18 +9,17 @@
         <canvas id="progressChart"></canvas>
     </div>
     <div class="cuadro__iconos">
-        <div class="cuadro__iconos__icono"><img src="assets/logo-resumen.png" alt=""></div>
-        <div class="cuadro__iconos__icono"><img src="assets/logo-modo-tipster.png" alt=""></div>
+        <div class="cuadro__iconos__icono"><img src="assets/logo-resumen.png" (click)="mainSummary()" alt=""></div>
+        <div class="cuadro__iconos__icono"><img src="assets/logo-modo-tipster.png" alt="" (click)="tipsterMode()"></div>
         <div class="cuadro__iconos__icono"><img src="assets/logo-ligas.png" alt=""></div>
         <div class="cuadro__iconos__icono"><img src="assets/logo-ligas-activas.png" alt=""></div>
         <div class="cuadro__iconos__icono"><img src="assets/logo-alertas.png" alt=""></div>
-        <div class="cuadro__iconos__icono"><img src="assets/logo-usuario.png" alt=""></div>
-        
+        <div class="cuadro__iconos__icono"><img src="assets/logo-usuario.png" alt="" (click)="userInfo()"></div>        
     </div>
 </div>
 
 
-<div class="dropdown">
+ <div class="dropdown">
     <button class="dropbtn">Leagues</button>
     <div class="dropdown-content">
         <a role="button" (click)="onSelected('España')">Spain</a>

@@ -10,6 +10,8 @@ body {
     background-size: contain;
     background-position: center;
     background-size: 100% 100%;
+    margin-left: var(--navMenuWidth); 
+    width: calc(100% - var(--navMenuWidth));
 }
 
 .my-form {
@@ -53,5 +55,15 @@ body {
   
   input[type="submit"]:hover {
     background-color: #45a049;
+  }
+
+  .botton__container {
+	
+    color: #000;
+    border: solid 1px black;
+    border-radius: 8px;
+    background-color: rgb(229, 229, 229);
+    text-align: center;
+  
   }
   

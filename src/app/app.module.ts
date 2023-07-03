@@ -20,13 +20,15 @@ import { AuthGuard } from './auth.guard';
 import { PersonaldataComponent } from './personaldata/personaldata.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LeaguesummaryComponent } from './leaguesummary/leaguesummary.component';
+import { TipstermodeComponent } from './tipstermode/tipstermode.component';
 
 const routes: Routes = [
   { path: '', component: MainsummaryComponent, canActivate: [AuthGuard] },
   // { path: 'main', component: MainsummaryComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'personalData', component: PersonaldataComponent },
-  { path: 'leagueSummary', component: LeaguesummaryComponent }
+  { path: 'leagueSummary', component: LeaguesummaryComponent },
+  { path: 'tipstermode', component: TipstermodeComponent }
 ];
 
 @NgModule({
@@ -43,7 +45,8 @@ const routes: Routes = [
     MainsummaryComponent,
     PersonaldataComponent,
     NavbarComponent,
-    LeaguesummaryComponent
+    LeaguesummaryComponent,
+    TipstermodeComponent
   ],
   imports: [
     BrowserModule,

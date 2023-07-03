@@ -36,6 +36,11 @@ export class MainsummaryComponent implements OnInit {
   userNetMoneySelectedObject: any;
   showInfoLeague = false;
 
+  totalProfit:boolean = true;
+  leagueStats:boolean = false;
+  currentStrike:boolean = false;
+  leagueProfit:boolean = false;
+
   constructor(private service: BackConnService, private router: Router) { }
 
   ngOnInit(): void {
@@ -77,12 +82,6 @@ export class MainsummaryComponent implements OnInit {
       hole.style.display = 'block';
     }
     this.ngOnChanges();
-  }
-
-  
-  logout() {
-    localStorage.setItem('token', '');
-    this.router.navigate(["login"]);
   }
 
   ngOnChanges() {
@@ -148,8 +147,33 @@ export class MainsummaryComponent implements OnInit {
     return obj[key];
   }
 
-  personalData(): void{
-    this.router.navigate(["personalData"]);
+  showTotalProfit(){
+    this.totalProfit = true;
+    this.leagueStats = false;
+    this.currentStrike = false;
+    this.leagueProfit = false;  
   }
+
+  showLeagueStats(){
+    this.totalProfit = false;
+    this.leagueStats = true;
+    this.currentStrike = false;
+    this.leagueProfit = false;  
+  }
+
+  showCurrentStrike(){
+    this.totalProfit = false;
+    this.leagueStats = false;
+    this.currentStrike = true;
+    this.leagueProfit = false;  
+  }
+  showLeagueProfit(){
+    this.totalProfit = false;
+    this.leagueStats = false;
+    this.currentStrike = false;
+    this.leagueProfit = true;  
+  }
+
+  
   
 }

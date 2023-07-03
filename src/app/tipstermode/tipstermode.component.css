@@ -1,0 +1,4 @@
+body{
+    margin-left: var(--navMenuWidth); 
+    width: calc(100% - var(--navMenuWidth));
+}

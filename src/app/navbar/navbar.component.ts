@@ -115,4 +115,18 @@ export class NavbarComponent implements OnInit {
         })
     }
   }
+
+  userInfo():void{
+      this.router.navigate(["personalData"]);
+  }
+
+  mainSummary():void{    
+    this.router.navigate([""]);
+  }
+
+  tipsterMode():void{    
+    this.router.navigate(["tipstermode"]);
+  }
+
+  
 }

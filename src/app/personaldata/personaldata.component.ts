@@ -33,7 +33,11 @@ export class PersonaldataComponent implements OnInit {
     this.service.updateMyPersonalData(this.username, this.password, this.startbettingmoney, this.telegramHash).subscribe(response => { 
       this.router.navigate([""]);
     })
+  }
 
+  logout() {
+    localStorage.setItem('token', '');
+    this.router.navigate(["login"]);
   }
 
 }
