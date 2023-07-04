@@ -20,9 +20,9 @@ interface userNetMoney {
 })
 export class MainsummaryComponent implements OnInit {
 
-  leaguesDrawPercentaje: { [key: string]: number }[] = [];
+  // leaguesDrawPercentaje: { [key: string]: number }[] = [];
   sortedLeaguesDrawPercentaje: { [key: string]: number } = {};
-  leaguesNoDrawStreak: { [key: string]: number }[] = [];
+  // leaguesNoDrawStreak: { [key: string]: number }[] = [];
   sortedLeaguesNoDrawStreak: { [key: string]: number } = {};
   leaguesNetIncome: { [key: string]: number }[] = [];
   sortedLeaguesNetIncome: { [key: string]: number } = {};
@@ -38,8 +38,11 @@ export class MainsummaryComponent implements OnInit {
 
   totalProfit:boolean = true;
   leagueStats:boolean = false;
-  currentStrike:boolean = false;
-  leagueProfit:boolean = false;
+  // currentStrike:boolean = false;
+  // leagueProfit:boolean = false;
+
+  leaguesNoDrawStreakDict: { [key: string]: number } = {};
+  leaguesDrawPercentajeDict: { [key: string]: number } = {};
 
   constructor(private service: BackConnService, private router: Router) { }
 
@@ -89,18 +92,17 @@ export class MainsummaryComponent implements OnInit {
       const keys = Object.keys(this.responseJson);
 
       // Evitar leer dos keys que no son ligas como 'Alert' y 'userNetMoney'
-      for (let i = 0; i < keys.length - 2; i++) {
-        const leaguesDrawPercentajeDict: { [key: string]: number } = {};
-        const leaguesNoDrawStreakDict: { [key: string]: number } = {};
+      for (let i = 0; i < keys.length - 2; i++) {       
+        
 
         const key = keys[i];
         const value = this.responseJson[key];
 
-        leaguesDrawPercentajeDict[key] = value.weekDayInfo.Total;
-        leaguesNoDrawStreakDict[key] = value.noDrawStreak;
+        this.leaguesDrawPercentajeDict[key] = value.weekDayInfo.Total;
+        this.leaguesNoDrawStreakDict[key] = value.noDrawStreak;
 
-        this.leaguesDrawPercentaje.push(leaguesDrawPercentajeDict);
-        this.leaguesNoDrawStreak.push(leaguesNoDrawStreakDict);
+        // this.leaguesDrawPercentaje.push(leaguesDrawPercentajeDict);
+        // this.leaguesNoDrawStreak.push(this.leaguesNoDrawStreakDict);
       }
 
       const usersNetMoney = this.responseJson["userNetMoney"];
@@ -120,16 +122,16 @@ export class MainsummaryComponent implements OnInit {
         }
       }
 
-      this.leaguesDrawPercentaje.sort((a, b) => {
-        const valueA = Object.values(a)[0]; // Obtener el valor del primer par clave-valor en a
-        const valueB = Object.values(b)[0]; // Obtener el valor del primer par clave-valor en b
-        return valueB - valueA;
-      });
-      this.leaguesNoDrawStreak.sort((a, b) => {
-        const valueA = Object.values(a)[0]; // Obtener el valor del primer par clave-valor en a
-        const valueB = Object.values(b)[0]; // Obtener el valor del primer par clave-valor en b
-        return valueB - valueA;
-      });
+      // this.leaguesDrawPercentaje.sort((a, b) => {
+      //   const valueA = Object.values(a)[0]; // Obtener el valor del primer par clave-valor en a
+      //   const valueB = Object.values(b)[0]; // Obtener el valor del primer par clave-valor en b
+      //   return valueB - valueA;
+      // });
+      // this.leaguesNoDrawStreak.sort((a, b) => {
+      //   const valueA = Object.values(a)[0]; // Obtener el valor del primer par clave-valor en a
+      //   const valueB = Object.values(b)[0]; // Obtener el valor del primer par clave-valor en b
+      //   return valueB - valueA;
+      // });
       this.leaguesNetIncome.sort((a, b) => {
         const valueA = Object.values(a)[0]; // Obtener el valor del primer par clave-valor en a
         const valueB = Object.values(b)[0]; // Obtener el valor del primer par clave-valor en b
@@ -150,28 +152,29 @@ export class MainsummaryComponent implements OnInit {
   showTotalProfit(){
     this.totalProfit = true;
     this.leagueStats = false;
-    this.currentStrike = false;
-    this.leagueProfit = false;  
+    // this.currentStrike = false;
+    // this.leagueProfit = false;  
   }
 
-  showLeagueStats(){
-    this.totalProfit = false;
-    this.leagueStats = true;
-    this.currentStrike = false;
-    this.leagueProfit = false;  
-  }
+  // showLeagueStats(){
+  //   this.totalProfit = false;
+  //   this.leagueStats = true;
+  //   this.currentStrike = false;
+  //   this.leagueProfit = false;  
+  // }
 
-  showCurrentStrike(){
-    this.totalProfit = false;
-    this.leagueStats = false;
-    this.currentStrike = true;
-    this.leagueProfit = false;  
-  }
+  // showCurrentStrike(){
+  //   this.totalProfit = false;
+  //   this.leagueStats = false;
+  //   this.currentStrike = true;
+  //   this.leagueProfit = false;  
+  // }
+
   showLeagueProfit(){
     this.totalProfit = false;
-    this.leagueStats = false;
-    this.currentStrike = false;
-    this.leagueProfit = true;  
+    this.leagueStats = true;
+    // this.currentStrike = false;
+    // this.leagueProfit = true;  
   }
 
   

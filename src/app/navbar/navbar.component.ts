@@ -13,7 +13,6 @@ document.documentElement.style.setProperty('--navMenuWidth', constants.navMenuWi
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  league: string = '';
   
   progressChart: any = {};
 
@@ -92,28 +91,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onSelected(value: string): void {
-    this.league = value;
     this.router.navigate(["leagueSummary", { data: value }]);
-  }
-
-  onSelectedSeason(value: string): void {
-    if (value.includes('2022-2023')) {
-      this.onSelected(this.league);
-    }
-    else {
-
-      console.log("-> nav bar onSelectedSeason");
-      console.log(this.league);
-      this.service.netIncomeSelectedYear(value + "/" + this.league).subscribe(response => {
-        this.league = value;
-        this.router.navigate(["leagueSummary", { data: value }]);
-      },
-        (error: HttpErrorResponse) => {
-          const statusCode = error.status;
-          this.service.setLoggedIn(false);
-          this.router.navigate(["login"]);
-        })
-    }
   }
 
   userInfo():void{

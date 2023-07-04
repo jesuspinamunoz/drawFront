@@ -1,81 +1,33 @@
-<!DOCTYPE html>
-
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="apuestas de fútbol">
-    <meta name="keywords" content="apuestas, fútbol, dinero, empate">
-    <title>Página resumen de los empates en cada liga</title>
-    <link rel="stylesheet" href="mainsummary.component.css">
-</head>
-
 <body>
     <main>
         <div class="button-container">
             <button class="button" (click)="showTotalProfit()">Beneficio Total</button>
-            <button class="button" (click)="showLeagueProfit()">Beneficio x Liga</button>
-            <button class="button" (click)="showCurrentStrike()">Actual Racha de cada liga </button>
-            <button class="button" (click)="showLeagueStats()">liga stats </button>
-          </div>
-          
+            <button class="button" (click)="showLeagueProfit()">Liga stats</button>
+        </div>
+
         <div class="container__principal">
 
-            
             <div [hidden]="!totalProfit">
-                <app-charts [league]="selectedLeague" [usersNetMoney]="userNetMoneySelectedObject"
-                    [showInfoLeague]="false"></app-charts>
+                <app-charts [league]="selectedLeague" [usersNetMoney]="userNetMoneySelectedObject" [showInfoLeague]="false"></app-charts>
             </div>
 
-            
             <div class="tablas">
                 <div [hidden]="!leagueStats">
-                    <div class="tabla">
-                        <table>
-                            <tr class="col">
-                                <th>#</th>
-                                <th>Liga</th>
-                                <th>% Empates</th>
-                            </tr>
-                            <tr class="wpos" *ngFor="let item of leaguesDrawPercentaje | keyvalue; index as i">
-                                <td>{{i+1}}</td>
-                                <td>{{getKey(item.value)}}</td>
-                                <td>{{getValue(item.value)}}</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div [hidden]="!currentStrike">
                     <div class="ptable">
                         <table>
                             <tr class="col">
-                                <th>#</th>
-                                <th>Liga</th>
-                                <th>Actual Racha</th>
-                            </tr>
-                            <tr class="wpos" *ngFor="let item of leaguesNoDrawStreak | keyvalue; index as i">
-                                <td>{{i+1}}</td>
-                                <td>{{getKey(item.value)}}</td>
-                                <td>{{getValue(item.value)}}</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-                <div [hidden]="!leagueProfit">
-                    <div class="ptable">                    
-                        <table>
-                            <tr class="col">
-                                <th>#</th>
+                                <th> </th>
                                 <th>Liga</th>
                                 <th>Balance en €</th>
+                                <th>Racha Actual</th>
+                                <th>% empates</th>
                             </tr>
                             <tr class="wpos" *ngFor="let item of leaguesNetIncome | keyvalue; index as i">
                                 <td>{{i+1}}</td>
                                 <td>{{getKey(item.value)}}</td>
                                 <td>{{getValue(item.value)}}</td>
+                                <td>{{leaguesNoDrawStreakDict[getKey(item.value)]}}</td>
+                                <td>{{leaguesDrawPercentajeDict[getKey(item.value)]}}</td>
                             </tr>
                         </table>
                     </div>
@@ -84,10 +36,3 @@
         </div>
     </main>
 </body>
-
-
-</html>
-
-
-
-<!-- </div> -->

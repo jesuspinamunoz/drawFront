@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BackConnService } from 'src/app/back-conn.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 interface userNetMoney {
   LeagueName: string;
@@ -19,8 +21,12 @@ export class LeaguesummaryComponent implements OnInit {
   userNetMoneySelectedObject: any;
   leagueName: any;
   display = false;  
+  league: string = '';
+  leagueStats: boolean = true;
+  teamsStats: boolean = false;
+  weekStats: boolean = false;
 
-  constructor(private route: ActivatedRoute, private service: BackConnService) { }
+  constructor(private route: ActivatedRoute, private service: BackConnService, private router: Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -46,6 +52,47 @@ export class LeaguesummaryComponent implements OnInit {
 
   compareYears() {
     this.display = !this.display;
+  }
+
+  onSelected(value: string): void {
+    this.league = value;
+    this.router.navigate(["leagueSummary", { data: value }]);
+  }
+
+  onSelectedSeason(value: string): void {
+    if (value.includes('2022-2023')) {
+      this.onSelected(this.league);
+    }
+    else {
+
+      console.log("-> nav bar onSelectedSeason");
+      console.log(this.league);
+      this.service.netIncomeSelectedYear(value + "/" + this.league).subscribe(response => {
+        this.league = value;
+        this.router.navigate(["leagueSummary", { data: value }]);
+      },
+        (error: HttpErrorResponse) => {
+          const statusCode = error.status;
+          this.service.setLoggedIn(false);
+          this.router.navigate(["login"]);
+        })
+    }
+  }
+
+  showLeagueStats(){
+    this.teamsStats = false;
+    this.leagueStats = true;
+    this.weekStats = false;
+  }
+  showTeamStats(){
+    this.teamsStats = true;
+    this.leagueStats = false;
+    this.weekStats = false;
+  }
+  showWeekStats(){
+    this.teamsStats = false;
+    this.leagueStats = false;
+    this.weekStats = true;
   }
 
 }
