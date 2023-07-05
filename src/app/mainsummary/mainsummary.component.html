@@ -17,12 +17,12 @@
                         <table>
                             <tr class="col">
                                 <th> </th>
-                                <th>Liga</th>
-                                <th>Balance en €</th>
-                                <th>Racha Actual</th>
-                                <th>% empates</th>
+                                <th (click)="sortTableByLiga()"             >Liga</th>
+                                <th (click)="sortTableByProfit()"           >Balance en €</th>
+                                <th (click)="sortTableByCurrentStrike()"    >Racha Actual</th>
+                                <th (click)="sortTableByDrawPercentaje()">% empates</th>
                             </tr>
-                            <tr class="wpos" *ngFor="let item of leaguesNetIncome | keyvalue; index as i">
+                            <tr class="wpos" *ngFor="let item of leaguesNetIncome | keyvalue:returnZero; index as i">
                                 <td>{{i+1}}</td>
                                 <td>{{getKey(item.value)}}</td>
                                 <td>{{getValue(item.value)}}</td>

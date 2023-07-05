@@ -24,7 +24,7 @@ export class MainsummaryComponent implements OnInit {
   sortedLeaguesDrawPercentaje: { [key: string]: number } = {};
   // leaguesNoDrawStreak: { [key: string]: number }[] = [];
   sortedLeaguesNoDrawStreak: { [key: string]: number } = {};
-  leaguesNetIncome: { [key: string]: number }[] = [];
+  leaguesNetIncome: any[] = [];
   sortedLeaguesNetIncome: { [key: string]: number } = {};
 
   league: string = '';
@@ -36,13 +36,18 @@ export class MainsummaryComponent implements OnInit {
   userNetMoneySelectedObject: any;
   showInfoLeague = false;
 
-  totalProfit:boolean = true;
-  leagueStats:boolean = false;
+  totalProfit: boolean = true;
+  leagueStats: boolean = false;
   // currentStrike:boolean = false;
   // leagueProfit:boolean = false;
 
   leaguesNoDrawStreakDict: { [key: string]: number } = {};
   leaguesDrawPercentajeDict: { [key: string]: number } = {};
+
+  sortedByLiga: boolean = false;
+  sortedByProfit: boolean = true;  
+  sortedByCurrentStrike: boolean = false;
+  sortedByDrawPercentage: boolean = false;
 
   constructor(private service: BackConnService, private router: Router) { }
 
@@ -92,17 +97,12 @@ export class MainsummaryComponent implements OnInit {
       const keys = Object.keys(this.responseJson);
 
       // Evitar leer dos keys que no son ligas como 'Alert' y 'userNetMoney'
-      for (let i = 0; i < keys.length - 2; i++) {       
-        
-
+      for (let i = 0; i < keys.length - 2; i++) {
         const key = keys[i];
         const value = this.responseJson[key];
 
         this.leaguesDrawPercentajeDict[key] = value.weekDayInfo.Total;
         this.leaguesNoDrawStreakDict[key] = value.noDrawStreak;
-
-        // this.leaguesDrawPercentaje.push(leaguesDrawPercentajeDict);
-        // this.leaguesNoDrawStreak.push(this.leaguesNoDrawStreakDict);
       }
 
       const usersNetMoney = this.responseJson["userNetMoney"];
@@ -122,21 +122,7 @@ export class MainsummaryComponent implements OnInit {
         }
       }
 
-      // this.leaguesDrawPercentaje.sort((a, b) => {
-      //   const valueA = Object.values(a)[0]; // Obtener el valor del primer par clave-valor en a
-      //   const valueB = Object.values(b)[0]; // Obtener el valor del primer par clave-valor en b
-      //   return valueB - valueA;
-      // });
-      // this.leaguesNoDrawStreak.sort((a, b) => {
-      //   const valueA = Object.values(a)[0]; // Obtener el valor del primer par clave-valor en a
-      //   const valueB = Object.values(b)[0]; // Obtener el valor del primer par clave-valor en b
-      //   return valueB - valueA;
-      // });
-      this.leaguesNetIncome.sort((a, b) => {
-        const valueA = Object.values(a)[0]; // Obtener el valor del primer par clave-valor en a
-        const valueB = Object.values(b)[0]; // Obtener el valor del primer par clave-valor en b
-        return valueB - valueA;
-      });
+      this.sortTableByProfit();
     }
   }
 
@@ -149,34 +135,122 @@ export class MainsummaryComponent implements OnInit {
     return obj[key];
   }
 
-  showTotalProfit(){
+  showTotalProfit() {
     this.totalProfit = true;
     this.leagueStats = false;
-    // this.currentStrike = false;
-    // this.leagueProfit = false;  
   }
 
-  // showLeagueStats(){
-  //   this.totalProfit = false;
-  //   this.leagueStats = true;
-  //   this.currentStrike = false;
-  //   this.leagueProfit = false;  
-  // }
-
-  // showCurrentStrike(){
-  //   this.totalProfit = false;
-  //   this.leagueStats = false;
-  //   this.currentStrike = true;
-  //   this.leagueProfit = false;  
-  // }
-
-  showLeagueProfit(){
+  showLeagueProfit() {
     this.totalProfit = false;
     this.leagueStats = true;
-    // this.currentStrike = false;
-    // this.leagueProfit = true;  
   }
 
-  
-  
+  returnZero() {
+    return 0
+  }
+
+  sortTableByLiga() {
+    this.sortedByLiga = !this.sortedByLiga;
+    this.leaguesNetIncome.sort((a, b) => {
+      const ligaA = this.getKey(a).toLowerCase();
+      const ligaB = this.getKey(b).toLowerCase();
+      if (this.sortedByLiga) {
+        if (ligaA < ligaB) {
+          return -1;
+        }
+        if (ligaA > ligaB) {
+          return 1;
+        }
+      }
+      else {
+        if (ligaA < ligaB) {
+          return 1;
+        }
+        if (ligaA > ligaB) {
+          return -1;
+        }
+      }
+      return 0;
+    });
+  }
+
+
+  sortTableByProfit() {
+    this.sortedByProfit = !this.sortedByProfit;
+
+    this.leaguesNetIncome.sort((a, b) => {
+      const ligaA = this.getValue(a);
+      const ligaB = this.getValue(b);
+      if (this.sortedByProfit) {
+        if (ligaA < ligaB) {
+          return -1;
+        }
+        if (ligaA > ligaB) {
+          return 1;
+        }
+      }
+      else {
+        if (ligaA < ligaB) {
+          return 1;
+        }
+        if (ligaA > ligaB) {
+          return -1;
+        }
+      }
+      return 0;
+    });
+  }
+
+  sortTableByCurrentStrike() {
+    this.sortedByCurrentStrike = !this.sortedByCurrentStrike;
+
+    this.leaguesNetIncome.sort((a, b) => {
+      const ligaA = this.leaguesNoDrawStreakDict[this.getKey(a)];
+      const ligaB = this.leaguesNoDrawStreakDict[this.getKey(b)];
+      if (this.sortedByCurrentStrike) {
+        if (ligaA < ligaB) {
+          return -1;
+        }
+        if (ligaA > ligaB) {
+          return 1;
+        }
+      }
+      else {
+        if (ligaA < ligaB) {
+          return 1;
+        }
+        if (ligaA > ligaB) {
+          return -1;
+        }
+      }
+      return 0;
+    });
+  }
+
+  sortTableByDrawPercentaje() {
+    this.sortedByDrawPercentage = !this.sortedByDrawPercentage;
+
+    this.leaguesNetIncome.sort((a, b) => {
+      const ligaA = this.leaguesDrawPercentajeDict[this.getKey(a)];
+      const ligaB = this.leaguesDrawPercentajeDict[this.getKey(b)];
+      if (this.sortedByDrawPercentage) {
+        if (ligaA < ligaB) {
+          return -1;
+        }
+        if (ligaA > ligaB) {
+          return 1;
+        }
+      }
+      else {
+        if (ligaA < ligaB) {
+          return 1;
+        }
+        if (ligaA > ligaB) {
+          return -1;
+        }
+      }
+      return 0;
+    });
+  }
+
 }
