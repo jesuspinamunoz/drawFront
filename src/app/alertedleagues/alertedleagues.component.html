@@ -1,0 +1,18 @@
+<body>
+    <main>  
+                    <div class="ptable">
+                        <table>
+                            <tr class="col">
+                                <th> </th>
+                                <th (click)="sortTableByLiga()"             >Liga</th>
+                                <th (click)="sortTableByStrike()"           >Actual Racha</th>
+                            </tr>
+                            <tr class="wpos" *ngFor="let item of alertedLeagues | keyvalue:returnZero; index as i">
+                                <td>{{i+1}}</td>
+                                <td>{{getKey(item.value)}}</td>
+                                <td>{{getValue(item.value)}}</td>
+                            </tr>
+                        </table>
+                    </div>
+    </main>
+</body>

@@ -44,10 +44,10 @@ export class MainsummaryComponent implements OnInit {
   leaguesNoDrawStreakDict: { [key: string]: number } = {};
   leaguesDrawPercentajeDict: { [key: string]: number } = {};
 
-  sortedByLiga: boolean = false;
+  sortedByLiga: boolean = true;
   sortedByProfit: boolean = true;  
-  sortedByCurrentStrike: boolean = false;
-  sortedByDrawPercentage: boolean = false;
+  sortedByCurrentStrike: boolean = true;
+  sortedByDrawPercentage: boolean = true;
 
   constructor(private service: BackConnService, private router: Router) { }
 
@@ -60,16 +60,7 @@ export class MainsummaryComponent implements OnInit {
       this.responseJson = response;
       this.alerts = response.alert;
       this.userNetMoney = response.userNetMoney;
-
-      this.userNetMoneySelectedObject = response.userNetMoney.find((objeto: userNetMoney) => objeto.LeagueID === 'allLeagues')
-
-      if (!this.alertShown) {
-        for (var alerting of this.alerts) {
-          alert("NO Draws: " + alerting);
-        }
-        this.alertShown = true;
-      }
-      // this.onSelected("SP1");
+      this.userNetMoneySelectedObject = response.userNetMoney.find((objeto: userNetMoney) => objeto.LeagueID === 'allLeagues');
       this.ngOnChanges();
     },
       (error: HttpErrorResponse) => {
@@ -94,15 +85,14 @@ export class MainsummaryComponent implements OnInit {
 
   ngOnChanges() {
     if (this.responseJson) {
-      const keys = Object.keys(this.responseJson);
 
-      // Evitar leer dos keys que no son ligas como 'Alert' y 'userNetMoney'
-      for (let i = 0; i < keys.length - 2; i++) {
-        const key = keys[i];
-        const value = this.responseJson[key];
-
-        this.leaguesDrawPercentajeDict[key] = value.weekDayInfo.Total;
-        this.leaguesNoDrawStreakDict[key] = value.noDrawStreak;
+      // Evitar leer dos keys que no son ligas como 'Alert' y 'userNetMoney', 'AlertDict'
+      for (const league in this.responseJson) {
+        if(this.responseJson[league].weekDayInfo)
+        {
+          this.leaguesDrawPercentajeDict[league] = this.responseJson[league].weekDayInfo.Total;
+          this.leaguesNoDrawStreakDict[league] = this.responseJson[league].noDrawStreak;
+        }
       }
 
       const usersNetMoney = this.responseJson["userNetMoney"];

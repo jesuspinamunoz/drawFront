@@ -23,8 +23,8 @@ export class LeaguesummaryComponent implements OnInit {
   display = false;  
   league: string = '';
   leagueStats: boolean = true;
-  teamsStats: boolean = false;
-  weekStats: boolean = false;
+  teamsStats: boolean = true;
+  weekStats: boolean = true;
 
   constructor(private route: ActivatedRoute, private service: BackConnService, private router: Router) { }
 

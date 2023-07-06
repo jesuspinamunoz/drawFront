@@ -106,5 +106,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(["tipstermode"]);
   }
 
+  goToAlertedLeagues(){    
+    this.router.navigate(["alertedLeagues"]);
+  }
+
   
 }

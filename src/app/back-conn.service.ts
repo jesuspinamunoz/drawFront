@@ -15,6 +15,7 @@ const UPDATEPERSONALDATA = 'api/updateMyPersonalData/';
 const MAINSUMMARY = "api/mainSummary/";
 
 const LEAGUESUMMARY = "api/leagueSummary/";
+const ALERTEDLEAGUES = "api/alertedLeagues/";
 
 
 interface LoginResponse {
@@ -117,6 +118,12 @@ export class BackConnService {
     };
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.http.post<any>(UPDATEPERSONALDATA, personalDataToUpdate, { headers } );
+  }
+
+  getAlertedLeagues()
+  {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.get<any>(ALERTEDLEAGUES, { headers });
   }
 
   getAccessToken() {
