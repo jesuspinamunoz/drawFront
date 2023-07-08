@@ -27,8 +27,12 @@ export class FixtureinfoComponent implements OnInit {
   ngOnInit(): void {
   }
   ngOnChanges() {
+    
     if(this.league)
     {
+      // Hacer clean del array
+      this.fullDrawsArray.length = 0; 
+      
       this.lastUpdateDate = this.league.lastUpdateDate;
       this.lastUpdateMatch = this.league.lastUpdateMatch;
       this.lastUpdateMatchResult = this.league.lastUpdateMatchResult;
