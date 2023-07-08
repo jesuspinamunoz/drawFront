@@ -199,10 +199,6 @@ export class ChartsComponent implements OnInit {
           }
           }
         });
-
-        if (this.league.noDrawStreak >= this.league.limitAlertDraws) {
-          alert("NO Draws: " + this.league.noDrawStreak);
-        }
       }
     }
   }

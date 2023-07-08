@@ -15,10 +15,19 @@ document.documentElement.style.setProperty('--navMenuWidth', constants.navMenuWi
 export class NavbarComponent implements OnInit {
   
   progressChart: any = {};
+  totalProfit:number = 0;
 
   constructor(private service: BackConnService, private router: Router) { }
 
   ngOnInit(): void {
+
+    this.service.getNavBarInfo().subscribe(response => {
+      this.totalProfit = response.TotalProfit;     
+    
+    })
+
+
+
     Chart.register(BarController, CategoryScale);
 
     this.progressChart = new Chart("progressChart", {
@@ -108,6 +117,11 @@ export class NavbarComponent implements OnInit {
 
   goToAlertedLeagues(){    
     this.router.navigate(["alertedLeagues"]);
+  }
+
+  goToActiveBetLeagues()
+  {
+    this.router.navigate(["activeBetLeagues"]);
   }
 
   

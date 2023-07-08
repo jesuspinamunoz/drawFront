@@ -1,4 +1,20 @@
 body{
     margin-left: var(--navMenuWidth); 
-    width: calc(100% - var(--navMenuWidth));
+    width: calc(100% - var(--navMenuWidth));    
 }
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los componentes se envuelvan en múltiples líneas */
+  }
+  
+  .component {
+    flex: 0 0 200px; /* Establece un ancho fijo para los componentes */
+    height: 100px; /* Ajusta la altura de los componentes según tus necesidades */
+    
+    margin-right: 0px; /* Añade un margen derecho entre los componentes */
+    margin-bottom: 0px; /* Añade un margen inferior para que los componentes bajen a la siguiente línea */
+  }
+  
+  
+  

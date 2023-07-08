@@ -16,6 +16,9 @@ const MAINSUMMARY = "api/mainSummary/";
 
 const LEAGUESUMMARY = "api/leagueSummary/";
 const ALERTEDLEAGUES = "api/alertedLeagues/";
+const ACTIVEBETLEAGUES = "api/activeBetLeagues/";
+const TIPSTERMODE = "api/tipsterMode/";
+const NAVBARINFO = "api/navBarInfo/"
 
 
 interface LoginResponse {
@@ -124,6 +127,24 @@ export class BackConnService {
   {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.http.get<any>(ALERTEDLEAGUES, { headers });
+  }
+
+  getActiveBetLeagues() 
+  {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.get<any>(ACTIVEBETLEAGUES, { headers });
+  }
+  
+  getTipsterMode() 
+  {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.get<any>(TIPSTERMODE, { headers });
+  }
+
+  getNavBarInfo() 
+  {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.get<any>(NAVBARINFO, { headers });
   }
 
   getAccessToken() {

@@ -48,6 +48,8 @@ export class MainsummaryComponent implements OnInit {
   sortedByProfit: boolean = true;  
   sortedByCurrentStrike: boolean = true;
   sortedByDrawPercentage: boolean = true;
+  
+  userTotalProfit: any;
 
   constructor(private service: BackConnService, private router: Router) { }
 
@@ -61,6 +63,7 @@ export class MainsummaryComponent implements OnInit {
       this.alerts = response.alert;
       this.userNetMoney = response.userNetMoney;
       this.userNetMoneySelectedObject = response.userNetMoney.find((objeto: userNetMoney) => objeto.LeagueID === 'allLeagues');
+      this.userTotalProfit = response.TotalProfit;
       this.ngOnChanges();
     },
       (error: HttpErrorResponse) => {

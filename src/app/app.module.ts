@@ -22,15 +22,17 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LeaguesummaryComponent } from './leaguesummary/leaguesummary.component';
 import { TipstermodeComponent } from './tipstermode/tipstermode.component';
 import { AlertedleaguesComponent } from './alertedleagues/alertedleagues.component';
+import { ActivebetleaguesComponent } from './activebetleagues/activebetleagues.component';
+import { TarjetitasComponent } from './tarjetitas/tarjetitas.component';
 
 const routes: Routes = [
   { path: '', component: MainsummaryComponent, canActivate: [AuthGuard] },
-  // { path: 'main', component: MainsummaryComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'personalData', component: PersonaldataComponent },
   { path: 'leagueSummary', component: LeaguesummaryComponent },
   { path: 'tipstermode', component: TipstermodeComponent },
-  { path: 'alertedLeagues', component: AlertedleaguesComponent }
+  { path: 'alertedLeagues', component: AlertedleaguesComponent },
+  { path: 'activeBetLeagues', component: ActivebetleaguesComponent }
 ];
 
 @NgModule({
@@ -49,7 +51,9 @@ const routes: Routes = [
     NavbarComponent,
     LeaguesummaryComponent,
     TipstermodeComponent,
-    AlertedleaguesComponent
+    AlertedleaguesComponent,
+    ActivebetleaguesComponent,
+    TarjetitasComponent
   ],
   imports: [
     BrowserModule,

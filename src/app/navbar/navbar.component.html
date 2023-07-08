@@ -3,7 +3,7 @@
 <div class="cuadro">
     <div class="logo"></div>
     <div class="totalMoneyText">Beneficio Total:</div>
-    <div class="totalMoney">50 €</div>
+    <div class="totalMoney">{{totalProfit}} €</div>
     <div class="progressChart">
         Objetivo
         <canvas id="progressChart"></canvas>
@@ -12,7 +12,7 @@
         <div class="cuadro__iconos__icono"><img src="assets/logo-resumen.png" (click)="mainSummary()" alt=""></div>
         <div class="cuadro__iconos__icono"><img src="assets/logo-modo-tipster.png" alt="" (click)="tipsterMode()"></div>
         <div class="cuadro__iconos__icono"><img src="assets/logo-ligas.png" alt="" (click)="onSelected('España')"></div>
-        <div class="cuadro__iconos__icono"><img src="assets/logo-ligas-activas.png"  alt=""></div>
+        <div class="cuadro__iconos__icono"><img src="assets/logo-ligas-activas.png" (click)="goToActiveBetLeagues()" alt=""></div>
         <div class="cuadro__iconos__icono"><img src="assets/logo-alertas.png" (click)="goToAlertedLeagues()" alt=""></div>
         <div class="cuadro__iconos__icono"><img src="assets/logo-usuario.png" alt="" (click)="userInfo()"></div>        
     </div>
