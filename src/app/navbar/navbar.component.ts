@@ -4,7 +4,6 @@ import { BackConnService } from 'src/app/back-conn.service'
 import { HttpErrorResponse } from '@angular/common/http';
 import { constants } from 'src/app/constants';
 import { Chart, BarController, CategoryScale } from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 document.documentElement.style.setProperty('--navMenuWidth', constants.navMenuWidth);
 
@@ -62,14 +61,6 @@ export class NavbarComponent implements OnInit {
             legend:{
               display:false,
             },
-            datalabels: {
-              anchor: 'end',
-              align: 'top',
-              formatter: Math.round,
-              font: {
-                  weight: 'bold'
-              }
-          }
           },
           indexAxis: 'y',
           responsive: true,
