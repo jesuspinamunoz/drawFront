@@ -27,7 +27,6 @@ export class NavbarComponent implements OnInit {
     this.service.getNavBarInfo().subscribe(response => {
       this.totalProfit = response.TotalProfit;       
       this.objetivo = response.Objetivo;  
-      console.log(this.objetivo);
       
       this.progressChart = new Chart("progressChart", {
         type: 'bar',

@@ -73,7 +73,6 @@ export class LeaguesummaryComponent implements OnInit {
       },
         (error: HttpErrorResponse) => {
           const statusCode = error.status;
-          this.service.setLoggedIn(false);
           this.router.navigate(["login"]);
         })
     }

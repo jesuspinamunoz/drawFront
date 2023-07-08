@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse   } from '@angular/common/http';
-import { Observable, throwError, Subject  } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 const baseUrl = 'api/netincome/';
 const baseUrlSeason = 'api/netIncomeSelectedYear/';
@@ -11,14 +10,13 @@ const LOGIN = 'api/login/';
 const LOGOUT = 'api/logout/';
 const PERSONALDATA = 'api/myPersonalData/';
 const UPDATEPERSONALDATA = 'api/updateMyPersonalData/';
-
 const MAINSUMMARY = "api/mainSummary/";
-
 const LEAGUESUMMARY = "api/leagueSummary/";
 const ALERTEDLEAGUES = "api/alertedLeagues/";
 const ACTIVEBETLEAGUES = "api/activeBetLeagues/";
 const TIPSTERMODE = "api/tipsterMode/";
 const NAVBARINFO = "api/navBarInfo/"
+
 
 
 interface LoginResponse {
@@ -85,17 +83,16 @@ export class BackConnService {
       username: _username,
       password: _password
     };
-    // this.http.post<LoginResponse>(LOGIN, loginData).subscribe(response => { 
-    //                                                                         this.accessToken = response.access_token;
-    //                                                                         this.setLoggedIn(response.responseStatus === '200');
-    //                                                                         this.authorizedUser = response.responseStatus === '200'
-    //                                                                       });
     return this.http.post<LoginResponse>(LOGIN, loginData);                                                                     
   }
 
   setLoggedIn(value: boolean): void {
     this.isLogged = value;
-    this.isLoggedSubject.next(value); // Emitir el nuevo valor
+    this.isLoggedSubject.next(value);
+  }
+
+  getLoggedIn(): boolean {
+    return this.isLogged;
   }
 
   logout(_accessToken: string)

@@ -22,8 +22,6 @@ export class ActivebetleaguesComponent implements OnInit {
         activeBetLeaguesDict[item] = response[item];
         this.activeBetLeagues.push(activeBetLeaguesDict);
       }
-
-      console.log(this.activeBetLeagues);
     })  
   }
 

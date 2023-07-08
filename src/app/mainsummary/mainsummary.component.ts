@@ -54,6 +54,7 @@ export class MainsummaryComponent implements OnInit {
   constructor(private service: BackConnService, private router: Router) { }
 
   ngOnInit(): void {
+    this.service.setLoggedIn(true);
     this.goToMainPage()
   }
 
@@ -68,7 +69,6 @@ export class MainsummaryComponent implements OnInit {
     },
       (error: HttpErrorResponse) => {
         const statusCode = error.status;
-        this.service.setLoggedIn(false);
         this.router.navigate(["login"]);
       }
     );
