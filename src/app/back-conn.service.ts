@@ -111,13 +111,14 @@ export class BackConnService {
     return this.http.get<any>(PERSONALDATA, { headers });
   }
 
-  updateMyPersonalData(_username: string, _password: string, _startbettingmoney: string, _telegramHash: string)
+  updateMyPersonalData(_username: string, _password: string, _startbettingmoney: string, _telegramHash: string, _objetivo:number)
   {
     const personalDataToUpdate = {
       username: _username,
       password: _password,
       startbettingmoney: _startbettingmoney,
       telegramHash: _telegramHash,
+      objetivo: _objetivo,
     };
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.http.post<any>(UPDATEPERSONALDATA, personalDataToUpdate, { headers } );

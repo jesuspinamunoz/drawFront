@@ -13,6 +13,7 @@ export class PersonaldataComponent implements OnInit {
   password:string = "";
   startbettingmoney:string = "";
   telegramHash:string = "";
+  objetivo:number = 0;
   constructor(private router: Router, private service: BackConnService) { }
 
   ngOnInit(): void {
@@ -21,16 +22,11 @@ export class PersonaldataComponent implements OnInit {
       this.password = response.password; 
       this.startbettingmoney = response.startbettingmoney; 
       this.telegramHash = response.telegramHash; 
+      this.objetivo = response.objetivo;
     }) 
   }
   updatePersonalData(): void {
-
-    console.log(this.username);
-    console.log(this.password);
-    console.log(this.startbettingmoney);
-    console.log(this.telegramHash);
-
-    this.service.updateMyPersonalData(this.username, this.password, this.startbettingmoney, this.telegramHash).subscribe(response => { 
+    this.service.updateMyPersonalData(this.username, this.password, this.startbettingmoney, this.telegramHash, this.objetivo).subscribe(response => { 
       this.router.navigate([""]);
     })
   }

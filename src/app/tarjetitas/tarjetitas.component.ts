@@ -12,8 +12,17 @@ export class TarjetitasComponent implements OnInit {
   
   constructor() { }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void {   
   }
+
+  ngOnChanges() {
+  }
+
+  
+
+
+
+
+
 
 }
