@@ -1,9 +1,24 @@
 <body>
     <main>
-        <div class="button-container">
+        <!-- <div class="button-container">
             <button class="button" (click)="showTotalProfit()">Beneficio Total</button>
             <button class="button" (click)="showLeagueProfit()">Liga stats</button>
-        </div>
+        </div> -->
+        <div class="radio-inputs">
+            <label class="radio">
+              <input (click)="showTotalProfit()" type="radio" name="radio" checked="">
+              <span class="name">Beneficio Total</span>
+            </label>
+            <label class="radio">
+              <input (click)="showLeagueProfit()" type="radio" name="radio">
+              <span class="name">Liga stats</span>
+            </label>
+                
+            <!-- <label class="radio">
+              <input type="radio" name="radio">
+              <span class="name">Vue</span>
+            </label> -->
+          </div>
 
         <div class="container__principal">
 
@@ -18,16 +33,16 @@
                             <tr class="col">
                                 <th> </th>
                                 <th (click)="sortTableByLiga()"             >Liga</th>
-                                <th (click)="sortTableByProfit()"           >Balance en €</th>
+                                <th (click)="sortTableByProfit()"           >Beneficio</th>
                                 <th (click)="sortTableByCurrentStrike()"    >Racha Actual</th>
-                                <th (click)="sortTableByDrawPercentaje()">% empates</th>
+                                <th (click)="sortTableByDrawPercentaje()">Empates</th>
                             </tr>
                             <tr class="wpos" *ngFor="let item of leaguesNetIncome | keyvalue:returnZero; index as i">
                                 <td>{{i+1}}</td>
                                 <td>{{getKey(item.value)}}</td>
                                 <td>{{getValue(item.value)}}</td>
                                 <td>{{leaguesNoDrawStreakDict[getKey(item.value)]}}</td>
-                                <td>{{leaguesDrawPercentajeDict[getKey(item.value)]}}</td>
+                                <td>{{leaguesDrawPercentajeDict[getKey(item.value)]}} %</td>
                             </tr>
                         </table>
                     </div>

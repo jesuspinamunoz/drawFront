@@ -1,67 +1,96 @@
 <body>
     <main>
-        <div class="button-container">
-            <div class="dropdown">
-                <button class="dropbtn">Leagues</button>
-                <div class="dropdown-content">
-                    <a role="button" (click)="onSelected('España')">Spain</a>
-                    <a role="button" (click)="onSelected('España2')">Spain 2</a>
-                    <a role="button" (click)="onSelected('ROU')">Romania</a>
-                    <a role="button" (click)="onSelected('POL')">Poland</a>
-                    <a role="button" (click)="onSelected('P1')">Portugal</a>
-                    <a role="button" (click)="onSelected('G1')">Greece</a>
-                    <a role="button" (click)="onSelected('CROA')">Croatia</a>
-                    <a role="button" (click)="onSelected('Hungria')">Hungary</a>
-                    <a role="button" (click)="onSelected('COL')">Colombia</a>
-                    <a role="button" (click)="onSelected('CHIL')">Chile</a>
-                    <a role="button" (click)="onSelected('ESLOVENIA')">Slovenia</a>
-                    <a role="button" (click)="onSelected('LETONIA')">Latvia</a>
-                    <a role="button" (click)="onSelected('SERBIA')">Serbia</a>
-                    <a role="button" (click)="onSelected('AUSTRALIA')">Australia</a>
-                    <a role="button" (click)="onSelected('BULGARIA')">Bulgaria</a>
-                    <a role="button" (click)="onSelected('GIBRALTAR')">Gibraltar</a>
-                    <a role="button" (click)="onSelected('AZERBAIYAN')">Azerbaijan</a>
-                    <a role="button" (click)="onSelected('URU')">Uruguay</a>
-                    <a role="button" (click)="onSelected('HONGKONG')">Hong Kong</a>
-                    <a role="button" (click)="onSelected('INDIA')">India</a>
-                    <a role="button" (click)="onSelected('PERU')">Peru</a>
-                </div>
+        <div class="container_menu">
+            <div class="radio-inputs">
+                <label class="radio">
+                    <input (click)="showLeagueStats()" type="radio" name="radio" checked="">
+                    <span class="name">Liga</span>
+                </label>
+                <label class="radio">
+                    <input (click)="showTeamStats()" type="radio" name="radio">
+                    <span class="name">Equipos</span>
+                </label>
+                <label class="radio">
+                    <input (click)="showWeekStats()" type="radio" name="radio">
+                    <span class="name">Semana</span>
+                </label>
             </div>
+            <div class="league_menu">
+                <div [hidden]="!leagueStats">
 
-            <div class="dropdown">
-                <button class="dropbtn">Season</button>
-                <div class="dropdown-content">
-                    <a role="button" (click)="onSelectedSeason('2022-2023')">2022-2023</a>
-                    <a role="button" (click)="onSelectedSeason('2021-2022')">2021-2022</a>
-                    <a role="button" (click)="onSelectedSeason('2020-2021')">2020-2021</a>
-                    <a role="button" (click)="onSelectedSeason('2019-2020')">2019-2020</a>
+                    <div class="dropdown">
+                        <button class="dropbtn">Leagues</button>
+                        <div class="dropdown-content">
+                            <a role="button" (click)="onSelected('España')">Spain</a>
+                            <a role="button" (click)="onSelected('España2')">Spain 2</a>
+                            <a role="button" (click)="onSelected('ROU')">Romania</a>
+                            <a role="button" (click)="onSelected('POL')">Poland</a>
+                            <a role="button" (click)="onSelected('P1')">Portugal</a>
+                            <a role="button" (click)="onSelected('G1')">Greece</a>
+                            <a role="button" (click)="onSelected('CROA')">Croatia</a>
+                            <a role="button" (click)="onSelected('Hungria')">Hungary</a>
+                            <a role="button" (click)="onSelected('COL')">Colombia</a>
+                            <a role="button" (click)="onSelected('CHIL')">Chile</a>
+                            <a role="button" (click)="onSelected('ESLOVENIA')">Slovenia</a>
+                            <a role="button" (click)="onSelected('LETONIA')">Latvia</a>
+                            <a role="button" (click)="onSelected('SERBIA')">Serbia</a>
+                            <a role="button" (click)="onSelected('AUSTRALIA')">Australia</a>
+                            <a role="button" (click)="onSelected('BULGARIA')">Bulgaria</a>
+                            <a role="button" (click)="onSelected('GIBRALTAR')">Gibraltar</a>
+                            <a role="button" (click)="onSelected('AZERBAIYAN')">Azerbaijan</a>
+                            <a role="button" (click)="onSelected('URU')">Uruguay</a>
+                            <a role="button" (click)="onSelected('HONGKONG')">Hong Kong</a>
+                            <a role="button" (click)="onSelected('INDIA')">India</a>
+                            <a role="button" (click)="onSelected('PERU')">Peru</a>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">Season</button>
+                            <div class="dropdown-content">
+                                <a role="button" (click)="onSelectedSeason('2022-2023')">2022-2023</a>
+                                <a role="button" (click)="onSelectedSeason('2021-2022')">2021-2022</a>
+                                <a role="button" (click)="onSelectedSeason('2020-2021')">2020-2021</a>
+                                <a role="button" (click)="onSelectedSeason('2019-2020')">2019-2020</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <div class="toggle-border">
+                            <input (click)="compareYears()" id="one" type="checkbox">
+                            <label for="one">
+                                <div class="handle"></div>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <button type="button" (click)="updateCVSs()">Update CSVs</button>
-            <button type="button" (click)="compareYears()" style="margin-right: 10px;">Compare</button>
-            <button type="button" (click)="showLeagueStats()" style="margin-right: 10px;">Liga</button>
-            <button type="button" (click)="showTeamStats()" style="margin-right: 10px;">Equipos</button>
-            <button type="button" (click)="showWeekStats()" style="margin-right: 10px;">Semana</button>
+            
         </div>
+
+        <div class="container_info">
+            Apostar en esta liga: Sí    
+            Racha seleccionada:5        
+            Racha recomendada:6
+        </div>
+
+            
 
 
         <div class="container__principal">
-            <div *ngIf="display">
-                <app-yearcomparison [leagueName]="leagueName"></app-yearcomparison>
-            </div>
-
-            <div [hidden]="!leagueStats">
+            <div [hidden]="!leagueStats">                
+                <div *ngIf="display">
+                    <app-yearcomparison [leagueName]="leagueName"></app-yearcomparison>
+                </div>
                 <app-charts [league]="selectedLeague" [usersNetMoney]="userNetMoneySelectedObject"
                     [showInfoLeague]="true"></app-charts>
             </div>
 
 
-            <app-filteringslicer [league]="selectedLeague"></app-filteringslicer>
+            <!-- <app-filteringslicer [league]="selectedLeague"></app-filteringslicer> -->
 
             <div [hidden]="!teamsStats">
                 <app-fixtureinfo [league]="selectedLeague"></app-fixtureinfo>
             </div>
-            
+
             <div [hidden]="!weekStats">
                 <app-weekdaydrawinfo [league]="selectedLeague"></app-weekdaydrawinfo>
             </div>

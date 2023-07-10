@@ -40,7 +40,7 @@ export class ChartsComponent implements OnInit {
         data: {
           labels: this.usersNetMoney.IncomeChart_date_xAxis,
           datasets: [{
-            label: 'Income',
+            label: 'Beneficio',
             data: this.usersNetMoney.IncomeChart_netMoney_yAxis,
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgba(255, 99, 132, 1)',
@@ -48,6 +48,8 @@ export class ChartsComponent implements OnInit {
           }]
         },
         options: {
+          responsive: true,
+          maintainAspectRatio: false,
           plugins: {
             zoom: {
               pan: {
@@ -66,18 +68,22 @@ export class ChartsComponent implements OnInit {
                   enabled: true
                 },
                 mode: 'x',
-              }
-            }
+              },
+            },
+            legend:{
+              display:true,
+            },
           },
           scales: {
             x: {
+              display: false,
               ticks: {
-                color: "black"
+                color: "white"
               }
             },
             y: {
               ticks: {
-                color: "black"
+                color: "white"
               }
             }
           }
@@ -94,14 +100,14 @@ export class ChartsComponent implements OnInit {
           data: {
             labels: this.league.chart_noConsecutiveDraws_xAxis_matchNumber,
             datasets: [{
-              label: 'No Draws Consecutive',
+              label: 'Racha sin empates',
               data: this.league.chart_noConsecutiveDraws_yAxis_noDrawStreak,
               backgroundColor: 'rgba(255, 255, 255, 1)',
               borderColor: 'rgba(255, 99, 132, 1)',
               borderWidth: 1
             },
             {
-              label: 'Spent Money',
+              label: 'Dinero Apostado',
               data: this.league.chart_noConsecutiveDraws_yAxis_martingala,
               backgroundColor: 'rgba(80, 0, 30, 0.5)',
               borderColor: 'rgba(255, 99, 132, 1)',
@@ -112,6 +118,8 @@ export class ChartsComponent implements OnInit {
             ]
           },
           options: {
+            responsive: true,
+    maintainAspectRatio: false,
             plugins: {
               zoom: {
                 pan: {
@@ -155,7 +163,7 @@ export class ChartsComponent implements OnInit {
           data: {
             labels: this.league.chart_drawsByFixture_xAxis_weekNumber,
             datasets: [{
-              label: 'Draw by Week',
+              label: 'Empates por jornada',
               data: this.league.chart_drawsByFixture_yAxis_drawsByWeek,
               backgroundColor: 'rgba(255, 255, 255, 0.6)',
               borderColor: 'rgba(255, 99, 132, 1)',
@@ -163,6 +171,8 @@ export class ChartsComponent implements OnInit {
             }]
           },
           options: {
+            responsive: true,
+    maintainAspectRatio: false,
             plugins: {
               zoom: {
                 pan: {
