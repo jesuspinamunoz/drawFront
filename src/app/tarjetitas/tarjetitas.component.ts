@@ -9,6 +9,7 @@ export class TarjetitasComponent implements OnInit {
 
   @Input() value: any; 
   @Input() text: any; 
+  @Input() img: any; 
   
   constructor() { }
 
