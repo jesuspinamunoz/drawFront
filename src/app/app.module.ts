@@ -8,7 +8,6 @@ import { BackConnService } from './back-conn.service';
 import { RouterModule, Routes } from '@angular/router';
 import { ChartsComponent } from './charts/charts.component';
 import { FixtureinfoComponent } from './fixtureinfo/fixtureinfo.component';
-import { CookieService } from 'ngx-cookie-service';
 import { NextmatchinfoComponent } from './nextmatchinfo/nextmatchinfo.component';
 import { WeekdaydrawinfoComponent } from './weekdaydrawinfo/weekdaydrawinfo.component';
 import { FilteringslicerComponent } from './filteringslicer/filteringslicer.component';
@@ -62,7 +61,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [BackConnService, CookieService, AuthGuard ],
+  providers: [BackConnService, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
