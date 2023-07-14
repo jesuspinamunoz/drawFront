@@ -6,7 +6,15 @@
     <div class="totalMoney">{{totalProfit}} €</div>
     <div class="progressChart">
         Objetivo
-        <canvas id="progressChart"></canvas>
+        <!-- <mat-progress-bar mode="determinate" [value]="objetivo"></mat-progress-bar> -->
+        <section class="example-section">
+            <mat-progress-bar
+                class="example-margin"
+                mode="determinate"
+                [value]="objetivo">
+            </mat-progress-bar>
+                  <div style="position: absolute; padding: 10px; color: white;"> {{objetivo}}% </div>
+          </section>
     </div>
     <div class="cuadro__iconos">
         <div class="cuadro__iconos__icono"><img src="assets/logo-resumen.png" (click)="mainSummary()" alt=""></div>

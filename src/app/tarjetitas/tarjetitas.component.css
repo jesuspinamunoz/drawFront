@@ -23,13 +23,15 @@ main {
 }
 
 .value {
-  color: blueviolet;
+  color: white;
   gap: 10px;
   padding: 10px;
   display: flex;
   justify-content: right;
   align-items: center;
   flex-direction: row;
+  position: relative;
+  z-index: 2;
   
 }
 

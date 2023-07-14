@@ -23,6 +23,12 @@ import { TipstermodeComponent } from './tipstermode/tipstermode.component';
 import { AlertedleaguesComponent } from './alertedleagues/alertedleagues.component';
 import { ActivebetleaguesComponent } from './activebetleagues/activebetleagues.component';
 import { TarjetitasComponent } from './tarjetitas/tarjetitas.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 const routes: Routes = [
   { path: '', component: MainsummaryComponent, canActivate: [AuthGuard] },
@@ -59,7 +65,13 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatIconModule,
+    MatMenuModule,
+    MatListModule,
+    MatProgressBarModule
   ],
   providers: [BackConnService, AuthGuard ],
   bootstrap: [AppComponent]

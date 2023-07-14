@@ -16,6 +16,7 @@ const ALERTEDLEAGUES = "api/alertedLeagues/";
 const ACTIVEBETLEAGUES = "api/activeBetLeagues/";
 const TIPSTERMODE = "api/tipsterMode/";
 const NAVBARINFO = "api/navBarInfo/"
+const LEAGUENAMES = "api/leagueNames/"
 
 
 
@@ -147,5 +148,11 @@ export class BackConnService {
 
   getAccessToken() {
     return this.accessToken;
+  }
+
+  getleagueNames()
+  {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.get<any>(LEAGUENAMES, { headers });
   }
 }

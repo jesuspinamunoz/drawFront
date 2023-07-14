@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { BackConnService } from 'src/app/back-conn.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { DOCUMENT } from '@angular/common';
+
 
 interface userNetMoney {
   LeagueName: string;
@@ -17,6 +19,7 @@ interface userNetMoney {
 })
 export class LeaguesummaryComponent implements OnInit {
   
+  
   selectedLeague: any;
   userNetMoneySelectedObject: any;
   leagueName: any;
@@ -25,15 +28,29 @@ export class LeaguesummaryComponent implements OnInit {
   leagueStats: boolean = true;
   teamsStats: boolean = false;
   weekStats: boolean = false;
+  info: any;
+  isChecked: boolean = true;
+  isBettingRecommended: boolean = true;
+  leagueNames: string[] = []
 
   constructor(private route: ActivatedRoute, private service: BackConnService, private router: Router) { }
 
   ngOnInit(): void {
+
     this.route.paramMap.subscribe(params => {
       this.leagueName = params.get('data') as string;
+      this.service.getleagueNames().subscribe(response => {
+        this.leagueNames = response.leagueNames;
+      });
+
+
       this.service.getLeagueSummary(this.leagueName).subscribe(response => {
         this.selectedLeague = response[this.leagueName];
+        console.log(this.selectedLeague)
         this.userNetMoneySelectedObject = response.userNetMoney.find((objeto: userNetMoney) => objeto.LeagueName === this.leagueName)
+        this.info = response.info;
+        this.isChecked = this.info.bet;
+        this.isBettingRecommended = this.info.isBettingRecommended;
       })        
     });
   }
@@ -55,6 +72,7 @@ export class LeaguesummaryComponent implements OnInit {
   }
 
   onSelected(value: string): void {
+    console.log(value);
     this.league = value;
     this.router.navigate(["leagueSummary", { data: value }]);
   }
@@ -64,8 +82,6 @@ export class LeaguesummaryComponent implements OnInit {
       this.onSelected(this.league);
     }
     else {
-
-      console.log("-> nav bar onSelectedSeason");
       console.log(this.league);
       this.service.netIncomeSelectedYear(value + "/" + this.league).subscribe(response => {
         this.league = value;
@@ -84,11 +100,13 @@ export class LeaguesummaryComponent implements OnInit {
     this.weekStats = false;
   }
   showTeamStats(){
+    console.log("show team stats")
     this.teamsStats = true;
     this.leagueStats = false;
     this.weekStats = false;
   }
   showWeekStats(){
+    console.log("show week stats")
     this.teamsStats = false;
     this.leagueStats = false;
     this.weekStats = true;

@@ -9,7 +9,6 @@
             <th (click)="sortTableByHome()" >Casa</th>
             <th (click)="sortTableByAway()" >Fuera</th>
         </tr>
-        {{fullDrawsArray}}
         <tr class="wpos" *ngFor="let item of fullDrawsArray | keyvalue:returnZero; index as i">
             <td>{{i+1}}</td>
             <td>{{getKey(item.value)}}</td>
