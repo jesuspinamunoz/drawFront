@@ -10,8 +10,8 @@ import Chart from 'chart.js/auto/auto.mjs';
 })
 export class YearcomparisonComponent implements OnInit {
   @Input() leagueName: any;
-  // @Input() league2223: any;
 
+  league2324:any;
   league2223:any;
   league2122:any;
   league2021:any;
@@ -27,25 +27,28 @@ export class YearcomparisonComponent implements OnInit {
   constructor(private service: BackConnService) { }
 
   ngOnInit(): void {    
-    this.service.netIncomeSelectedYear("2022-2023/" + this.leagueName).subscribe(response => {
-      this.league2223 = response.seasonYear;
-      this.service.netIncomeSelectedYear("2021-2022/" + this.leagueName).subscribe(response => {
-        this.league2122 = response.seasonYear;
-        this.service.netIncomeSelectedYear("2020-2021/" + this.leagueName).subscribe(response => {
-          this.league2021 = response.seasonYear;
-          this.service.netIncomeSelectedYear("2019-2020/" + this.leagueName).subscribe(response => {
-            this.league1920 = response.seasonYear;
-            this.service.netIncomeSelectedYear("2018-2019/" + this.leagueName).subscribe(response => {
-              this.league1819 = response.seasonYear;
-              this.service.netIncomeSelectedYear("2017-2018/" + this.leagueName).subscribe(response => {
-                this.league1718 = response.seasonYear;
-                this.service.netIncomeSelectedYear("2016-2017/" + this.leagueName).subscribe(response => {
-                  this.league1617 = response.seasonYear;
-                  this.service.netIncomeSelectedYear("2015-2016/" + this.leagueName).subscribe(response => {
-                    this.league1516 = response.seasonYear;
-                    this.service.netIncomeSelectedYear("2014-2015/" + this.leagueName).subscribe(response => {
-                      this.league1415 = response.seasonYear;
-                      this.OnChanges();
+    this.service.netIncomeSelectedYear("2023-2024/" + this.leagueName).subscribe(response => {
+      this.league2324 = response.seasonYear;
+      this.service.netIncomeSelectedYear("2022-2023/" + this.leagueName).subscribe(response => {
+        this.league2223 = response.seasonYear;
+        this.service.netIncomeSelectedYear("2021-2022/" + this.leagueName).subscribe(response => {
+          this.league2122 = response.seasonYear;
+          this.service.netIncomeSelectedYear("2020-2021/" + this.leagueName).subscribe(response => {
+            this.league2021 = response.seasonYear;
+            this.service.netIncomeSelectedYear("2019-2020/" + this.leagueName).subscribe(response => {
+              this.league1920 = response.seasonYear;
+              this.service.netIncomeSelectedYear("2018-2019/" + this.leagueName).subscribe(response => {
+                this.league1819 = response.seasonYear;
+                this.service.netIncomeSelectedYear("2017-2018/" + this.leagueName).subscribe(response => {
+                  this.league1718 = response.seasonYear;
+                  this.service.netIncomeSelectedYear("2016-2017/" + this.leagueName).subscribe(response => {
+                    this.league1617 = response.seasonYear;
+                    this.service.netIncomeSelectedYear("2015-2016/" + this.leagueName).subscribe(response => {
+                      this.league1516 = response.seasonYear;
+                      this.service.netIncomeSelectedYear("2014-2015/" + this.leagueName).subscribe(response => {
+                        this.league1415 = response.seasonYear;
+                        this.OnChanges();
+                      });
                     });
                   });
                 });
@@ -58,7 +61,12 @@ export class YearcomparisonComponent implements OnInit {
   }
 
   OnChanges() {
-    let maxArray: number = Math.max(this.league2223.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league2122.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league2021.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1920.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1819.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1718.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1617.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1516.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1415.chart_noConsecutiveDraws_xAxis_matchNumber.length)
+    let maxArray: number = Math.max(this.league2324.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league2223.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league2122.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league2021.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1920.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1819.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1718.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1617.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1516.chart_noConsecutiveDraws_xAxis_matchNumber.length, this.league1415.chart_noConsecutiveDraws_xAxis_matchNumber.length)
+
+    for(var i = this.league2324.chart_noConsecutiveDraws_xAxis_matchNumber.length + 1;i<=maxArray;i++) { 
+      this.league2324.chart_noConsecutiveDraws_xAxis_matchNumber.push(0);
+      this.league2324.chart_noConsecutiveDraws_yAxis_noDrawStreak.push(0);
+    } 
 
     for(var i = this.league2223.chart_noConsecutiveDraws_xAxis_matchNumber.length + 1;i<=maxArray;i++) { 
       this.league2223.chart_noConsecutiveDraws_xAxis_matchNumber.push(0);
@@ -108,7 +116,18 @@ export class YearcomparisonComponent implements OnInit {
       type: 'bar',
       data: {
         labels: this.league2223.chart_noConsecutiveDraws_xAxis_matchNumber,
-        datasets: [{
+        datasets: [
+        {
+          label: '23-24',
+          type: 'line',
+          data: this.league2324.chart_noConsecutiveDraws_yAxis_noDrawStreak,
+          backgroundColor: 'rgba(0,19,80, 60)',
+          borderColor: 'rgba(0,19,80, 60)',
+          borderWidth: 3,
+          xAxisID: 'x2',
+          hidden: false,
+        },
+        {
           label: '22-23',
           data: this.league2223.chart_noConsecutiveDraws_yAxis_noDrawStreak,
           backgroundColor: 'rgba(255, 99, 132, 0.5)',

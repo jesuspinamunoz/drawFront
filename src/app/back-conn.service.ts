@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse   } from '@angular/common/http';
 import {Subject} from 'rxjs';
 
 const baseUrl = 'api/netincome/';
-const baseUrlSeason = 'api/netIncomeSelectedYear/';
+const SELECTEDSEASON = 'api/netIncomeSelectedYear/';
 const UpdateCSVUrl = 'api/UpdateCSVs/';
 const UpdateSelectedNDraws = 'api/UpdateSelectedNDraws/';
 const LOGIN = 'api/login/';
@@ -57,7 +57,7 @@ export class BackConnService {
   }
   netIncomeSelectedYear(seasonLeague: string) {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this.http.get<any>(baseUrlSeason + seasonLeague, { headers });
+    return this.http.get<any>(SELECTEDSEASON + seasonLeague, { headers });
   }
   UpdateCSVs(_accessToken: string) {
     this.http.get<any>(UpdateCSVUrl).subscribe(response => {
