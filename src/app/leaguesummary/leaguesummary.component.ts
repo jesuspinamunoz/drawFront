@@ -28,6 +28,7 @@ export class LeaguesummaryComponent implements OnInit {
   leagueStats: boolean = true;
   teamsStats: boolean = false;
   weekStats: boolean = false;
+  resultado: boolean = false;
   info: any;
   isChecked: boolean = true;
   isBettingRecommended: boolean = true;
@@ -105,18 +106,26 @@ export class LeaguesummaryComponent implements OnInit {
     this.teamsStats = false;
     this.leagueStats = true;
     this.weekStats = false;
+    this.resultado = false;
   }
   showTeamStats(){
-    console.log("show team stats")
     this.teamsStats = true;
     this.leagueStats = false;
     this.weekStats = false;
+    this.resultado = false;
   }
   showWeekStats(){
-    console.log("show week stats")
     this.teamsStats = false;
     this.leagueStats = false;
     this.weekStats = true;
+    this.resultado = false;
+  }
+
+  showResultados(){
+    this.teamsStats = false;
+    this.leagueStats = false;
+    this.weekStats = false;
+    this.resultado = true;
   }
 
 }

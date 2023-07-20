@@ -1,0 +1,13 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	height: 70vh;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  #myIframe {
+	flex: 1; /* Permite que el iframe ocupe todo el espacio vertical disponible en el contenedor */
+	width: 95vh;
+	max-height: 80vh; 
+  }
