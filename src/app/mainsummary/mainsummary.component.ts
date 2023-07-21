@@ -48,6 +48,7 @@ export class MainsummaryComponent implements OnInit {
   sortedByProfit: boolean = true;  
   sortedByCurrentStrike: boolean = true;
   sortedByDrawPercentage: boolean = true;
+  sortedByRachaSeleccionada: boolean = true;
   
   userTotalProfit: any;
 
@@ -88,9 +89,9 @@ export class MainsummaryComponent implements OnInit {
 
   ngOnChanges() {
     if (this.responseJson) {
-
       // Evitar leer dos keys que no son ligas como 'Alert' y 'userNetMoney', 'AlertDict'
       for (const league in this.responseJson) {
+
         if(this.responseJson[league].weekDayInfo)
         {
           this.leaguesDrawPercentajeDict[league] = this.responseJson[league].weekDayInfo.Total;
@@ -227,6 +228,32 @@ export class MainsummaryComponent implements OnInit {
       const ligaA = this.leaguesDrawPercentajeDict[this.getKey(a)];
       const ligaB = this.leaguesDrawPercentajeDict[this.getKey(b)];
       if (this.sortedByDrawPercentage) {
+        if (ligaA < ligaB) {
+          return -1;
+        }
+        if (ligaA > ligaB) {
+          return 1;
+        }
+      }
+      else {
+        if (ligaA < ligaB) {
+          return 1;
+        }
+        if (ligaA > ligaB) {
+          return -1;
+        }
+      }
+      return 0;
+    });
+  }
+
+  sortTableByRachaSeleccionada() {
+    this.sortedByRachaSeleccionada = !this.sortedByRachaSeleccionada;
+
+    this.leaguesNetIncome.sort((a, b) => {
+      const ligaA = this.responseJson.selectedNDrawStreakByLeague[this.getKey(a)];
+      const ligaB = this.responseJson.selectedNDrawStreakByLeague[this.getKey(b)];
+      if (this.sortedByRachaSeleccionada) {
         if (ligaA < ligaB) {
           return -1;
         }

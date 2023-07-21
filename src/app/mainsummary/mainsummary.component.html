@@ -23,16 +23,23 @@
                         <table>
                             <tr class="col">
                                 <th> </th>
-                                <th (click)="sortTableByLiga()"             >Liga</th>
-                                <th (click)="sortTableByProfit()"           >Beneficio</th>
-                                <th (click)="sortTableByCurrentStrike()"    >Racha Actual</th>
-                                <th (click)="sortTableByDrawPercentaje()">Empates</th>
+                                <th (click)="sortTableByLiga()"                 >Liga</th>
+                                <th (click)="sortTableByProfit()"               >Beneficio</th>
+                                <th (click)="sortTableByCurrentStrike()"        >Racha Actual</th>
+                                <th (click)="sortTableByRachaSeleccionada()"    >Racha Seleccionada</th>
+                                <th                                             >Apostar en esta liga</th>
+                                <th (click)="sortTableByDrawPercentaje()"       >Empates</th>
                             </tr>
                             <tr class="wpos" *ngFor="let item of leaguesNetIncome | keyvalue:returnZero; index as i">
                                 <td>{{i+1}}</td>
                                 <td>{{getKey(item.value)}}</td>
                                 <td>{{getValue(item.value)}}</td>
                                 <td>{{leaguesNoDrawStreakDict[getKey(item.value)]}}</td>
+                                <td>{{responseJson.selectedNDrawStreakByLeague[getKey(item.value)]}}</td>
+                                <td>
+                                    <mat-icon *ngIf="responseJson.betIntheLeague[getKey(item.value)]; else notDoneIcon">done</mat-icon>
+                                    <ng-template #notDoneIcon><mat-icon>close</mat-icon></ng-template>
+                                  </td>
                                 <td>{{leaguesDrawPercentajeDict[getKey(item.value)]}} %</td>
                             </tr>
                         </table>
