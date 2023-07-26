@@ -29,7 +29,7 @@ export class MainsummaryComponent implements OnInit {
 
   league: string = '';
   responseJson: any;
-  alerts: string[] = [];
+  // alerts: string[] = [];
   userNetMoney: any;
   alertShown: boolean = false;
   selectedLeague: any;
@@ -62,7 +62,7 @@ export class MainsummaryComponent implements OnInit {
   goToMainPage() {
     this.service.getMainSummary().subscribe(response => {
       this.responseJson = response;
-      this.alerts = response.alert;
+      // this.alerts = response.alert;
       this.userNetMoney = response.userNetMoney;
       this.userNetMoneySelectedObject = response.userNetMoney.find((objeto: userNetMoney) => objeto.LeagueID === 'allLeagues');
       this.userTotalProfit = response.TotalProfit;

@@ -9,7 +9,6 @@ const UpdateSelectedNDraws = 'api/UpdateSelectedNDraws/';
 const LOGIN = 'api/login/';
 const LOGOUT = 'api/logout/';
 const PERSONALDATA = 'api/myPersonalData/';
-const UPDATEPERSONALDATA = 'api/updateMyPersonalData/';
 const MAINSUMMARY = "api/mainSummary/";
 const LEAGUESUMMARY = "api/leagueSummary/";
 const ALERTEDLEAGUES = "api/alertedLeagues/";
@@ -119,7 +118,7 @@ export class BackConnService {
       objetivo: _objetivo,
     };
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this.http.post<any>(UPDATEPERSONALDATA, personalDataToUpdate, { headers } );
+    return this.http.post<any>(PERSONALDATA, personalDataToUpdate, { headers } );
   }
 
   getAlertedLeagues()

@@ -10,7 +10,7 @@
                 <tr class="wpos" *ngFor="let item of activeBetLeagues | keyvalue:returnZero; index as i">
                     <td>{{i+1}}</td>
                     <td>{{getKey(item.value)}}</td>
-                    <td>{{getValue(item.value)}}<mat-icon>euro_symbol</mat-icon></td>
+                    <td>{{getValue(item.value)}} €</td>
                 </tr>
             </table>
         </div>
