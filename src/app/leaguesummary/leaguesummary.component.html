@@ -45,34 +45,78 @@
 
         </div>
 
+
+
         <div class="container_info">
-            Apostar en esta liga
-            <label class="container">
-                <input type="checkbox" [(ngModel)]="isChecked" [checked]="isChecked">
-                <svg viewBox="0 0 64 64" height="2em" width="2em">
-                    <path
-                        d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                        pathLength="575.0541381835938" class="path"></path>
-                </svg>
-            </label>
-            Es recomendado apostar en esta liga
-            <label class="container">
-                <input type="checkbox" [(ngModel)]="isBettingRecommended" [checked]="isBettingRecommended" disabled>
-                <svg viewBox="0 0 64 64" height="2em" width="2em">
-                    <path
-                        d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
-                        pathLength="575.0541381835938" class="path"></path>
-                </svg>
-            </label>
-            Racha seleccionada: {{info.selectedNNoDrawsStreak}}
-            Racha recomendada: {{info.recommendedNNoDrawsStreak}}
+            <div class="container">
+                <div class="left">
+                    Apostar en esta liga 
+                    <input type="checkbox" [(ngModel)]="isChecked" [checked]="isChecked">
+                    <svg viewBox="0 0 64 64" height="1em" width="1em">
+                        <path
+                            d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+                            pathLength="575.0541381835938" class="path">
+                        </path>
+                    </svg>
+                    <mat-divider></mat-divider>
+                    Racha seleccionada: {{info.selectedNNoDrawsStreak}}
+                </div>
+                <mat-divider class="divider" vertical style="height: 100px"></mat-divider>
+                <div class="right">
+                    Es recomendado apostar en esta liga
+                    <input type="checkbox" [(ngModel)]="isChecked" [checked]="isChecked">
+                    <svg viewBox="0 0 64 64" height="1em" width="1em">
+                        <path
+                            d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+                            pathLength="575.0541381835938" class="path">
+                        </path>
+                    </svg>
+                    <mat-divider></mat-divider>
+                    Racha recomendada: {{info.recommendedNNoDrawsStreak}}
+                </div>
+            </div>
         </div>
+
+
+        <!-- <div class="container_info">
+            <div class="container_info_box">
+                Apostar en esta liga -->
+                <!-- <label class="container">
+                    <input type="checkbox" [(ngModel)]="isChecked" [checked]="isChecked">
+                    <svg viewBox="0 0 64 64" height="2em" width="2em">
+                        <path
+                            d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+                            pathLength="575.0541381835938" class="path"></path>
+                    </svg>
+                </label> -->
+            <!-- </div>
+            a<mat-divider vertical style="height:10px"></mat-divider>b                             
+            <div class="container_info_box">
+                
+                
+                Es recomendado apostar en esta liga -->
+                <!-- <label class="container">
+                    <input type="checkbox" [(ngModel)]="isBettingRecommended" [checked]="isBettingRecommended" disabled>
+                    <svg viewBox="0 0 64 64" height="2em" width="2em">
+                        <path
+                            d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16"
+                            pathLength="575.0541381835938" class="path"></path>
+                    </svg>
+                </label> -->
+                
+            <!-- </div>
+            <div class="container_info_box">
+                c<mat-divider> </mat-divider>d
+                Racha seleccionada: {{info.selectedNNoDrawsStreak}}
+                Racha recomendada: {{info.recommendedNNoDrawsStreak}}
+            </div>
+        </div> -->
 
 
 
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-            <!-- <mat-icon>more_vert</mat-icon> -->
-            <span>Leagues</span>
+            <mat-icon>flag</mat-icon>
+            <span>{{leagueName}}</span>
         </button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item *ngFor="let item of leagueNames" (click)="onSelected(item)">

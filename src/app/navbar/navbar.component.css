@@ -31,7 +31,7 @@
 .progressChart
 {  
   margin-left: 10px;
-  width: 40vh;
+  width: calc(var(--navMenuWidth) - 20px);
   height: 20px;
 }
 

@@ -204,7 +204,38 @@ main{
     border-radius: 10px;
     border: 2px solid rgb(0, 0, 0); /* Ancho de 2px y estilo solid */
     color: white;
+    
   }
+  .container_info_box
+  {
+    display: flex;
+
+  }
+
+
+  .container {
+    display: flex;
+    /* align-items: center; */
+  }
+  
+  .left{
+    margin-top: "0px";
+    flex: 1;
+    text-align: right;
+  }
+  
+  .right{
+    
+    margin-top: "0px";
+    flex: 1;
+    text-align: left;
+
+  }
+  
+  .divider {
+    margin: 0 20px;
+  }
+  
 
   
   .container {
