@@ -35,12 +35,16 @@
                                 <td>{{getKey(item.value)}}</td>
                                 <td>{{getValue(item.value)}}</td>
                                 <td>{{leaguesNoDrawStreakDict[getKey(item.value)]}}</td>
-                                <td>{{responseJson.selectedNDrawStreakByLeague[getKey(item.value)]}}</td>
                                 <td>
-                                    <mat-icon *ngIf="responseJson.betIntheLeague[getKey(item.value)]; else notDoneIcon">done</mat-icon>
-                                    <ng-template #notDoneIcon><mat-icon>close</mat-icon></ng-template>
-                                  </td>
+                                    <input type="number" value={{responseJson.selectedNDrawStreakByLeague[getKey(item.value)]}} (input)="onInputChange($any($event).target.value, getKey(item.value))" style="background-color: rgba(255, 255, 255, 0.2);" class="input" />
+                                </td>
+                                <td>
+                                    <!-- <mat-icon *ngIf="responseJson.betIntheLeague[getKey(item.value)]; else notDoneIcon">done</mat-icon>
+                                    <ng-template #notDoneIcon><mat-icon>close</mat-icon></ng-template> -->
+                                    <mat-slide-toggle [(ngModel)]=responseJson.betIntheLeague[getKey(item.value)] (change)="onInputChangeBetOnLeague($event.checked, getKey(item.value))" ></mat-slide-toggle>
+                                </td>
                                 <td>{{leaguesDrawPercentajeDict[getKey(item.value)]}} %</td>
+                                
                             </tr>
                         </table>
                     </div>

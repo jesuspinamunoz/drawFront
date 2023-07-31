@@ -5,7 +5,8 @@ import {Subject} from 'rxjs';
 const baseUrl = 'api/netincome/';
 const SELECTEDSEASON = 'api/netIncomeSelectedYear/';
 const UpdateCSVUrl = 'api/UpdateCSVs/';
-const UpdateSelectedNDraws = 'api/UpdateSelectedNDraws/';
+const UPDATESELECTEDNDRAWS = 'api/UpdateSelectedNDraws/';
+const UPDATEBETINLEAGUE = 'api/UpdateBetInLeague/';
 const LOGIN = 'api/login/';
 const LOGOUT = 'api/logout/';
 const PERSONALDATA = 'api/myPersonalData/';
@@ -75,7 +76,15 @@ export class BackConnService {
   }
 
   UpdateLeagueNDraws(league: string, newNDraws: string) {
-    this.http.get<any>(UpdateSelectedNDraws + league + "/" + newNDraws).subscribe(response => { });
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+
+    return this.http.get<any>(UPDATESELECTEDNDRAWS + league + "/" + newNDraws, { headers });
+  }
+
+  UpdateBetInLeague(league: string, betInLeague: string) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+
+    return this.http.get<any>(UPDATEBETINLEAGUE + league + "/" + betInLeague, { headers });
   }
 
   login(_username: string, _password: string){

@@ -273,4 +273,13 @@ export class MainsummaryComponent implements OnInit {
     });
   }
 
+  onInputChange(newValue: any, _league:any) {
+    this.service.UpdateLeagueNDraws(_league, newValue).subscribe();
+  }
+
+  onInputChangeBetOnLeague(_bet:any, _league:any)
+  {
+    this.service.UpdateBetInLeague(_league,_bet).subscribe();
+  }
+
 }
