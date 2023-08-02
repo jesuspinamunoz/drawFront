@@ -32,7 +32,7 @@
                             </tr>
                             <tr class="wpos" *ngFor="let item of leaguesNetIncome | keyvalue:returnZero; index as i">
                                 <td>{{i+1}}</td>
-                                <td>{{getKey(item.value)}}</td>
+                                <td><a (click)="onSelectedLeague(getKey(item.value))" class="enlace">{{getKey(item.value)}}</a></td>
                                 <td>{{getValue(item.value)}}</td>
                                 <td>{{leaguesNoDrawStreakDict[getKey(item.value)]}}</td>
                                 <td>

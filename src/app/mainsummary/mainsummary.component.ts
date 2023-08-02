@@ -282,4 +282,9 @@ export class MainsummaryComponent implements OnInit {
     this.service.UpdateBetInLeague(_league,_bet).subscribe();
   }
 
+  onSelectedLeague(value: string): void {
+    this.league = value;
+    this.router.navigate(["leagueSummary", { data: value }]);
+  }
+
 }

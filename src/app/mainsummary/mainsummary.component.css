@@ -148,3 +148,15 @@ main {
 	padding: 5px 10px;
 	border-radius: 3px;
   }
+
+  .enlace {
+	text-decoration: underline;
+	cursor: pointer;
+  }
+  
+  .enlace:hover {
+	color: rgb(255, 64, 129);
+	/* Agrega aquí cualquier otro estilo que desees cuando el ratón pasa por encima */
+  }
+  
+  

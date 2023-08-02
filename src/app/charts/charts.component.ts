@@ -106,15 +106,15 @@ export class ChartsComponent implements OnInit {
               borderColor: 'rgba(255, 99, 132, 1)',
               borderWidth: 1
             },
-            {
-              label: 'Dinero Apostado',
-              data: this.league.chart_noConsecutiveDraws_yAxis_martingala,
-              backgroundColor: 'rgba(80, 0, 30, 0.5)',
-              borderColor: 'rgba(255, 99, 132, 1)',
-              borderWidth: 1,
-              xAxisID: 'x2',
-              hidden: true,
-            },
+            // {
+            //   label: 'Dinero Apostado',
+            //   data: this.league.chart_noConsecutiveDraws_yAxis_martingala,
+            //   backgroundColor: 'rgba(80, 0, 30, 0.5)',
+            //   borderColor: 'rgba(255, 99, 132, 1)',
+            //   borderWidth: 1,
+            //   xAxisID: 'x2',
+            //   hidden: true,
+            // },
             ]
           },
           options: {
