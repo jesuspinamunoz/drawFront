@@ -13,13 +13,12 @@
                 <label class="radio">
                     <input (click)="showWeekStats()" type="radio" name="radio">
                     <span class="name">Semana</span>
-                </label>                
+                </label>
                 <label class="radio">
                     <input (click)="showResultados()" type="radio" name="radio">
                     <span class="name">Resultados</span>
                 </label>
-            </div>
-            <div class="league_menu">
+
                 <div [hidden]="!leagueStats">
 
                     <div class="dropdown">
@@ -42,6 +41,9 @@
                     </div>
                 </div>
             </div>
+            <div class="league_menu">
+                
+            </div>
 
         </div>
 
@@ -50,7 +52,7 @@
         <div class="container_info">
             <div class="container">
                 <div class="left">
-                    Apostar en esta liga 
+                    Apostar en esta liga
                     <input type="checkbox" [(ngModel)]="isChecked" [checked]="isChecked">
                     <svg viewBox="0 0 64 64" height="1em" width="1em">
                         <path
@@ -81,7 +83,7 @@
         <!-- <div class="container_info">
             <div class="container_info_box">
                 Apostar en esta liga -->
-                <!-- <label class="container">
+        <!-- <label class="container">
                     <input type="checkbox" [(ngModel)]="isChecked" [checked]="isChecked">
                     <svg viewBox="0 0 64 64" height="2em" width="2em">
                         <path
@@ -89,13 +91,13 @@
                             pathLength="575.0541381835938" class="path"></path>
                     </svg>
                 </label> -->
-            <!-- </div>
+        <!-- </div>
             a<mat-divider vertical style="height:10px"></mat-divider>b                             
             <div class="container_info_box">
                 
                 
                 Es recomendado apostar en esta liga -->
-                <!-- <label class="container">
+        <!-- <label class="container">
                     <input type="checkbox" [(ngModel)]="isBettingRecommended" [checked]="isBettingRecommended" disabled>
                     <svg viewBox="0 0 64 64" height="2em" width="2em">
                         <path
@@ -103,8 +105,8 @@
                             pathLength="575.0541381835938" class="path"></path>
                     </svg>
                 </label> -->
-                
-            <!-- </div>
+
+        <!-- </div>
             <div class="container_info_box">
                 c<mat-divider> </mat-divider>d
                 Racha seleccionada: {{info.selectedNNoDrawsStreak}}

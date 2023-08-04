@@ -17,6 +17,7 @@ main{
 }
 
 .button-container {
+  margin-left: 8px;
 	display: inline-block;
 }
   
@@ -40,12 +41,12 @@ main{
 
 /* Dropdown Button */
 .dropbtn {
-    background-color: #8304aa;
-    color: white;
-    padding: 16px;
+    background-color: #8304aa00;
+    color: rgb(0, 0, 0);
+    padding: 5px;
     font-size: 16px;
     border: solid;
-    border-radius: 16px;
+    border-radius: 8px;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -84,7 +85,8 @@ main{
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: #d000ff;
+  cursor: pointer;
+    background-color: #d000ff26;
 }
 
 
@@ -155,7 +157,7 @@ main{
 	box-sizing: border-box;
 	box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
 	padding: 0.25rem;
-	width: 300px;
+	width: 100%;
 	font-size: 14px;
   }
   
@@ -188,6 +190,7 @@ main{
 
   .container_menu {
     display: flex;
+    width: 100%;
     align-items: center;
   }
 
@@ -276,6 +279,10 @@ main{
 
   .container__secundario{
     display: flex;
+  }
+
+  a {
+    cursor: pointer;
   }
 
 
