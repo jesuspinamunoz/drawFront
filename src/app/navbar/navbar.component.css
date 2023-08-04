@@ -47,18 +47,34 @@
 }
 
 .cuadro__iconos__icono {
+  cursor: pointer;
   margin: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100px;
+ padding: 0px;
  
+ border-radius: 4px;
   height: 100px;
-  background-color: aliceblue;
+  background-color: rgba(230, 2, 255, 0.467);
+}
+
+.cuadro__iconos__icono:active {
+  transform: scale(0.96);
+}
+
+
+.cuadro__iconos__icono:hover {
+  padding: 5px;
+  transition: 0.1s;
+  width: 90px;
+  height: 90px;
 }
 
 img {
   max-width: 100%;
+  border-radius: 4px;
 }
 
 .example-section {
