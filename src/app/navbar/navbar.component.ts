@@ -54,6 +54,10 @@ export class NavbarComponent implements OnInit {
   {
     this.router.navigate(["activeBetLeagues"]);
   }
+  goToInfoBets()
+  {
+    this.router.navigate(["infoBetsComponent"]);
+  }
 
   
 }

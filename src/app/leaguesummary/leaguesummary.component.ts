@@ -79,27 +79,17 @@ export class LeaguesummaryComponent implements OnInit {
   }
 
   onSelectedSeason(value: string): void {
-    // if (value.includes('2023-2024')) {
-    //   this.router.navigate(["leagueSummary", { data: this.league }]);
-    // }
-    // else {
-      console.log(this.league);
       this.service.netIncomeSelectedYear(value + "/" + this.league).subscribe(response => {
-        console.log(response);
             this.selectedLeague = response.seasonYear;
-            console.log(this.selectedLeague)
             this.userNetMoneySelectedObject = response.userNetMoney.find((objeto: userNetMoney) => objeto.LeagueName === this.leagueName)
-            console.log(this.userNetMoneySelectedObject)
             this.info = response.info;
             this.isChecked = this.info.bet;
             this.isBettingRecommended = this.info.isBettingRecommended;
-            // this.router.navigate(["leagueSummary", { data: value }]);
       },
             (error: HttpErrorResponse) => {
               const statusCode = error.status;
               this.router.navigate(["login"]);
             })
-    // }
   }
 
   showLeagueStats(){
