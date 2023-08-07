@@ -8,6 +8,10 @@
             <span>{{leagueName}}</span>
         </button>
         <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="onSelected('Total')">
+                <mat-icon>flag</mat-icon>
+                <span>Total</span>
+            </button>
             <button mat-menu-item *ngFor="let item of leagueNames" (click)="onSelected(item)">
                 <mat-icon>flag</mat-icon>
                 <span>{{item}}</span>
