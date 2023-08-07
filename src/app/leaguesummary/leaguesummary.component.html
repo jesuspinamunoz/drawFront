@@ -20,27 +20,7 @@
                 </label>                
             </div>
         </div>
-        <div class="seasons" [hidden]="!leagueStats">
-
-            <div class="dropdown">
-                <button class="dropbtn">Season</button>
-                <div class="dropdown-content">
-                    <a role="button" (click)="onSelectedSeason('2023-2024')">2023-2024</a>
-                    <a role="button" (click)="onSelectedSeason('2022-2023')">2022-2023</a>
-                    <a role="button" (click)="onSelectedSeason('2021-2022')">2021-2022</a>
-                    <a role="button" (click)="onSelectedSeason('2020-2021')">2020-2021</a>
-                    <a role="button" (click)="onSelectedSeason('2019-2020')">2019-2020</a>
-                </div>
-            </div>
-            <div class="button-container">
-                <div class="toggle-border">
-                    <input (click)="compareYears()" id="one" type="checkbox">
-                    <label for="one">
-                        <div class="handle"></div>
-                    </label>
-                </div>
-            </div>
-        </div>
+        
 
 
         <div class="container_info">
@@ -121,7 +101,27 @@
             </button>
         </mat-menu>
 
+        <div class="seasons" [hidden]="!leagueStats">
 
+            <div class="dropdown">
+                <button class="dropbtn">Season</button>
+                <div class="dropdown-content">
+                    <a role="button" (click)="onSelectedSeason('2023-2024')">2023-2024</a>
+                    <a role="button" (click)="onSelectedSeason('2022-2023')">2022-2023</a>
+                    <a role="button" (click)="onSelectedSeason('2021-2022')">2021-2022</a>
+                    <a role="button" (click)="onSelectedSeason('2020-2021')">2020-2021</a>
+                    <a role="button" (click)="onSelectedSeason('2019-2020')">2019-2020</a>
+                </div>
+            </div>
+            <div class="button-container">
+                <div class="toggle-border">
+                    <input (click)="compareYears()" id="one" type="checkbox">
+                    <label for="one">
+                        <div class="handle"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
 
 
         <div class="container__principal">
