@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackConnService } from 'src/app/back-conn.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tipstermode',
@@ -19,24 +20,35 @@ export class TipstermodeComponent implements OnInit {
   MaxImporte:any;
   ImporteMedio:any;
 
-  league:string = "Total";
+  leagueName:string = "Total";
+  
+  leagueNames: string[] = []
 
-  constructor(private service: BackConnService) { }
+  constructor(private service: BackConnService, private router: Router) { }
 
   ngOnInit(): void {
+    this.service.getleagueNames().subscribe(response => {
+      this.leagueNames = response.leagueNames;        
+    });
+
     this.service.getTipsterMode().subscribe(response => {
-      this.league = "Total";
-      this.ImporteTotalApostado = response.ImporteTotalApostado[this.league];
-      this.ROI = response.ROI[this.league];
-      this.Exito = response.Exito[this.league];
-      this.ApuestasGanadoras = response.ApuestasGanadoras[this.league];
-      this.ApuestasPerdedoras = response.ApuestasPerdedoras[this.league];
-      this.MaxOdd = response.MaxOdd[this.league];
-      this.MinOdd = response.MinOdd[this.league];
-      this.AverageOdd = response.AverageOdd[this.league];
-      this.MaxImporte = response.MaxImporte[this.league];
-      this.ImporteMedio = response.ImporteMedio[this.league];     
+      this.leagueName = "Total";
+      this.ImporteTotalApostado = response.ImporteTotalApostado[this.leagueName];
+      this.ROI = response.ROI[this.leagueName];
+      this.Exito = response.Exito[this.leagueName];
+      this.ApuestasGanadoras = response.ApuestasGanadoras[this.leagueName];
+      this.ApuestasPerdedoras = response.ApuestasPerdedoras[this.leagueName];
+      this.MaxOdd = response.MaxOdd[this.leagueName];
+      this.MinOdd = response.MinOdd[this.leagueName];
+      this.AverageOdd = response.AverageOdd[this.leagueName];
+      this.MaxImporte = response.MaxImporte[this.leagueName];
+      this.ImporteMedio = response.ImporteMedio[this.leagueName];     
     })
+  }
+
+  onSelected(value: string): void {
+    this.leagueName = value;
+    // this.router.navigate(["leagueSummary", { data: value }]);
   }
 
 }

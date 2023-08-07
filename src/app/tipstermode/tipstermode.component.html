@@ -3,6 +3,16 @@
         <div class="imagen__tarjetitas">
             <img src="assets/RESULTADOS-1.png" alt="imagen__tarjetitas">
         </div>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>flag</mat-icon>
+            <span>{{leagueName}}</span>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngFor="let item of leagueNames" (click)="onSelected(item)">
+                <mat-icon>flag</mat-icon>
+                <span>{{item}}</span>
+            </button>
+        </mat-menu>
         <div class="container">
           
             <app-tarjetitas class="component" img="euro_symbol" text = "Importe Total Apostado" [value]="ImporteTotalApostado"></app-tarjetitas>
