@@ -70,4 +70,43 @@ input[type="submit"]:hover {
   background-color: rgba(255, 0, 0, 0.485);
 }
 
+/* Estilos para el botón verde */
+.green-button {
+  background-color: #4caf50; /* Color verde */
+  color: rgb(0, 0, 0); /* Texto en blanco para contrastar */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}
+.green-button:hover {
+  background-color: #06910f; /* Cambiar el color de fondo cuando se pasa el cursor */
+}
+
+/* Estilos para el botón rojo */
+.red-button {
+  background-color: #f44336; /* Color rojo */
+  color: rgb(0, 0, 0); /* Texto en blanco para contrastar */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}
+.red-button:hover {
+  background-color: #980909; /* Cambiar el color de fondo cuando se pasa el cursor */
+}
+
+/* Estilos para el botón amarillo */
+.yellow-button {
+  background-color: #eeea0b; /* Color rojo */
+  color: rgb(0, 0, 0); /* Texto en blanco para contrastar */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}
+.yellow-button:hover {
+  background-color: #8f9b0a; /* Cambiar el color de fondo cuando se pasa el cursor */
+}
+
 

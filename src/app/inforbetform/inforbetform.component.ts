@@ -15,6 +15,10 @@ export class InforbetformComponent implements OnInit {
   odd:number = 0;
   moneyBet:number = 0;
   wonBet:boolean = false;
+  status:string = "";
+  showClosedParameters:boolean = false;
+  cashOut:number = 0;
+  selectedValue:string = "";
 
   constructor(private route: ActivatedRoute, private router: Router, private service: BackConnService) { }
 
@@ -28,8 +32,28 @@ export class InforbetformComponent implements OnInit {
         this.odd = response.Cuota
         this.moneyBet = response.DineroApostado
         this.wonBet = response.Ganada
+        this.status = this.wonBet ? 'Ganada' : 'Perdida';
         })
       });  
+  }
+
+  onSelectedStatus(_status:any)
+  {
+    console.log(_status)
+    this.status = _status.type;
+    this.wonBet = true;
+    if(_status = 'closed')
+     {
+      this.showClosedParameters = true;
+     }
+  }
+
+  updateSingleInfoBet()
+  {
+    console.log("aaaaaaaaa")
+    this.service.updateInfoBetForm(this.leagueName, this.odd, this.moneyBet, this.status, this.cashOut).subscribe(response => { 
+      this.router.navigate([""]);
+    })
   }
 
 }

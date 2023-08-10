@@ -21,7 +21,6 @@ export class InfobetsComponent implements OnInit {
   ngOnInit(): void {
     this.service.getInfoBets().subscribe(response => {
         this.infoBetObjets = response;
-        console.log(response);
       },
         (error: HttpErrorResponse) => {
         const statusCode = error.status;
@@ -30,7 +29,7 @@ export class InfobetsComponent implements OnInit {
     )
   }
 
-  onclick(_date:Text, _league:Text){
+  onclick(_league:Text, _date:Text){
     this.router.navigate(["infoBetForm", { league: _league, date:_date }]);
   }
 

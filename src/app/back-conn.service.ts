@@ -178,6 +178,20 @@ export class BackConnService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.http.get<any>(INFOBETFORM + _league + "/" + _date + "/", { headers });
   }
+  
+  updateInfoBetForm(_league:string, _odd:number, _moneyBet:number, _status:string, _cashOut:number)
+  {
+    const inforBetFormToUpdate = {
+      league: _league,
+      odd: _odd,
+      moneyBet: _moneyBet,
+      status: _status,
+      cashOut: _cashOut,
+    };
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.post<any>(INFOBETFORM +_league + "/" + _moneyBet + "/",  inforBetFormToUpdate, { headers });
+  }
 
 
 }
