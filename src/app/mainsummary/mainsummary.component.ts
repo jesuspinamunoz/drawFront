@@ -75,15 +75,6 @@ export class MainsummaryComponent implements OnInit {
     );
 
     Chart.register(zoomPlugin);
-
-    const hole = document.getElementById('holeModal');
-    const el = document.getElementById('loader');
-    if (el != null && hole != null) {
-      // ✅ Hides element if shown
-      el.style.display = 'none';
-      // ✅ Shows element if hidden
-      hole.style.display = 'block';
-    }
     this.ngOnChanges();
   }
 

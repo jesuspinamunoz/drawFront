@@ -1,0 +1,53 @@
+<body> 
+
+    <div class="main-container">
+        <!-- <button mat-button (click)="delete()"> -->
+            <button mat-button class="btn-delete">
+                <mat-icon>delete</mat-icon>
+            </button>
+
+        <form class="my-form" (submit)="updateSingleInfoBet()">            
+    
+            <div class="form-group">
+                <label for="username">Liga:</label>
+                <input type="text" id="leagueName" name="leagueName" [(ngModel)]="leagueName" value="{{leagueName}}">
+            </div>
+    
+            <div class="form-group">
+                <label for="password">Cuota:</label>
+                <input type="number" id="odd" name="odd" [(ngModel)]="odd" value="{{odd}}">
+            </div>
+    
+            <div class="form-group">
+                <label for="startbettingmoney">Dinero apostado:</label>
+                <input type="number" id="moneyBet" name="moneyBet" [(ngModel)]="moneyBet" value="{{moneyBet}}">
+            </div>
+    
+            <div class="form-group">
+                <div>
+                    <select  #mySelect name="select"  [(ngModel)]="status">
+                        <option value="{{status}}">{{status}}</option>
+                        <option *ngIf="!wonBet">Ganada</option>
+                        <option *ngIf="wonBet">Perdida</option>
+                        <option value="cashout">Cashout</option>
+                    </select>
+
+                    <div *ngIf="status == 'cashout'">
+                        <div class="form-group">
+                            <label for="cashOut">Cerrada por:</label>
+                            <input type="number" id="cashOut" name="cashOut" [(ngModel)]="cashOut" value="{{cashOut}}">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <button type="submit">Actualizar</button>
+            
+        </form>
+
+    </div>
+    
+
+</body>

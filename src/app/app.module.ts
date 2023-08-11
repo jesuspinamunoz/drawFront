@@ -29,6 +29,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { InfobetsComponent } from './infobets/infobets.component';
+import { InforbetformComponent } from './inforbetform/inforbetform.component';
 
 const routes: Routes = [
   { path: '', component: MainsummaryComponent, canActivate: [AuthGuard] },
@@ -37,7 +39,9 @@ const routes: Routes = [
   { path: 'leagueSummary', component: LeaguesummaryComponent },
   { path: 'tipstermode', component: TipstermodeComponent },
   { path: 'alertedLeagues', component: AlertedleaguesComponent },
-  { path: 'activeBetLeagues', component: ActivebetleaguesComponent }
+  { path: 'activeBetLeagues', component: ActivebetleaguesComponent },  
+  { path: 'infoBetsComponent', component: InfobetsComponent },
+  { path: 'infoBetForm', component: InforbetformComponent }
 ];
 
 @NgModule({
@@ -58,7 +62,9 @@ const routes: Routes = [
     TipstermodeComponent,
     AlertedleaguesComponent,
     ActivebetleaguesComponent,
-    TarjetitasComponent
+    TarjetitasComponent,
+    InfobetsComponent,
+    InforbetformComponent
   ],
   imports: [
     BrowserModule,

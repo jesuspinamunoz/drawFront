@@ -1,0 +1,9 @@
+<body>
+    <main>
+        <div *ngFor="let item of infoBetObjets | keyvalue">
+            <div *ngFor="let valor of item.value">
+                    <app-tarjetitas (click)="onclick(valor.league, valor.netMoney)" class="component" img="" text={{valor.date}} value={{valor.league}}></app-tarjetitas>
+            </div>
+        </div>
+    </main>
+</body>
