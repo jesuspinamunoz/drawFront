@@ -19,21 +19,32 @@ export class InforbetformComponent implements OnInit {
   showClosedParameters:boolean = false;
   cashOut:number = 0;
   selectedValue:string = "";
+  leagueNames: string[] = [];
+
+  isUpdateForm:boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private service: BackConnService) { }
 
   ngOnInit(): void {
+    this.service.getleagueNames().subscribe(response => {
+      this.leagueNames = response.leagueNames;        
+    })
+
     this.route.paramMap.subscribe(params => {
       this.date = params.get('date') as string;  
-      this.leagueName = params.get('league') as string;     
+      this.leagueName = params.get('league') as string; 
+      this.status = 'Perdida';    
 
-      this.service.getInfoBetForm(this.leagueName, this.date).subscribe(response => {
-        console.log(response);
-        this.odd = response.Cuota
-        this.moneyBet = response.DineroApostado
-        this.wonBet = response.Ganada
-        this.status = this.wonBet ? 'Ganada' : 'Perdida';
-        })
+      if(this.leagueName!="None")
+      {
+        this.isUpdateForm = true;
+        this.service.getInfoBetForm(this.leagueName, this.date).subscribe(response => {
+          this.odd = response.Cuota;
+          this.moneyBet = response.DineroApostado;
+          this.wonBet = response.Ganada;
+          })        
+      }
+      
       });  
   }
 
@@ -50,10 +61,19 @@ export class InforbetformComponent implements OnInit {
 
   updateSingleInfoBet()
   {
-    console.log("aaaaaaaaa")
-    this.service.updateInfoBetForm(this.leagueName, this.odd, this.moneyBet, this.status, this.cashOut).subscribe(response => { 
-      this.router.navigate([""]);
-    })
+    if(this.isUpdateForm)
+    {
+      this.service.updateInfoBetForm(this.leagueName, this.date ,this.odd, this.moneyBet, this.status, this.cashOut).subscribe(response => { 
+        this.router.navigate([""]);
+      });
+    }
+    else{
+      this.service.addInfoBetForm(this.leagueName, this.odd, this.moneyBet, this.status, this.cashOut).subscribe(response => { 
+        this.router.navigate([""]);
+      });
+
+    }
+    
   }
 
 }

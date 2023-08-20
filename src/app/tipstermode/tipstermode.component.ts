@@ -22,7 +22,7 @@ export class TipstermodeComponent implements OnInit {
 
   leagueName:string = "Total";
   
-  leagueNames: string[] = []
+  leagueNames: string[] = [];
 
   constructor(private service: BackConnService, private router: Router) { }
 

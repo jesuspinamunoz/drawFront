@@ -1,5 +1,8 @@
 <body>
     <main>
+        <button mat-button class="btn-delete" (click)="addBet()">
+            <mat-icon>add_circle</mat-icon>
+        </button>
         <div *ngFor="let item of infoBetObjets | keyvalue">
             <div *ngFor="let valor of item.value">
                     <app-tarjetitas (click)="onclick(valor.league, valor.netMoney)" class="component" img="" text={{valor.date}} value={{valor.league}}></app-tarjetitas>

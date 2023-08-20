@@ -33,4 +33,8 @@ export class InfobetsComponent implements OnInit {
     this.router.navigate(["infoBetForm", { league: _league, date:_date }]);
   }
 
+  addBet(){
+    this.router.navigate(["infoBetForm", { league: "None", date:"" }]);
+  }
+
 }
