@@ -13,15 +13,30 @@ export class ActivebetleaguesComponent implements OnInit {
   sortedByLiga:boolean = false;
   sortedByMoney:boolean = false;
 
+  alertsDict:any;
+  alertsNotToBet:string[] = [];
+
   constructor(private service: BackConnService) { }
 
   ngOnInit(): void {
     this.service.getActiveBetLeagues().subscribe(response => {
-      for (const item in response) {
+      
+      for (const item in response.activeBets) {
         const activeBetLeaguesDict: { [key: string]: number } = {};
-        activeBetLeaguesDict[item] = response[item];
+        activeBetLeaguesDict[item] = response.activeBets[item];
         this.activeBetLeagues.push(activeBetLeaguesDict);
       }
+      this.alertsDict = response.alertsDict;
+
+      console.log(response.alertsDict)
+
+      this.alertsNotToBet = Object.keys(response.alertsDict).filter(
+        (key) => !(key in response.activeBets)
+      );
+
+      
+      console.log(this.alertsNotToBet)
+
     })  
   }
 

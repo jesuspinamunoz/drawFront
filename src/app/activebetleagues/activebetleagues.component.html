@@ -5,12 +5,21 @@
                 <tr class="col">
                     <th> </th>
                     <th (click)="sortTableByLiga()">Liga</th>
+                    <th>Racha</th>
                     <th (click)="sortTableByMoney()">Última Apuesta</th>
                 </tr>
                 <tr class="wpos" *ngFor="let item of activeBetLeagues | keyvalue:returnZero; index as i">
                     <td>{{i+1}}</td>
                     <td>{{getKey(item.value)}}</td>
+                    <td>{{alertsDict[getKey(item.value)]}}</td>
                     <td>{{getValue(item.value)}} €</td>
+                </tr>
+
+                <tr class="wposred" *ngFor="let item of alertsNotToBet ; index as j">
+                    <td>{{j + activeBetLeagues.length + 1}}</td>
+                    <td>{{item}}</td>
+                    <td>{{alertsDict[item]}}</td>
+                    <td>0 €</td>
                 </tr>
             </table>
         </div>

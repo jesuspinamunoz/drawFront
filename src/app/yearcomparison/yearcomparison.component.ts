@@ -117,101 +117,92 @@ export class YearcomparisonComponent implements OnInit {
       data: {
         labels: this.league2223.chart_noConsecutiveDraws_xAxis_matchNumber,
         datasets: [
-        {
-          label: '23-24',
-          type: 'line',
-          data: this.league2324.chart_noConsecutiveDraws_yAxis_noDrawStreak,
-          backgroundColor: 'rgba(0,19,80, 60)',
-          borderColor: 'rgba(0,19,80, 60)',
-          borderWidth: 3,
-          xAxisID: 'x2',
-          hidden: false,
-        },
-        {
-          label: '22-23',
-          data: this.league2223.chart_noConsecutiveDraws_yAxis_noDrawStreak,
-          backgroundColor: 'rgba(255, 99, 132, 0.5)',
-          borderColor: 'rgba(255, 99, 132, 1)',
-          borderWidth: 1
-        },
-        {
-          label: '21-22',
-          type: 'line',
-          data: this.league2122.chart_noConsecutiveDraws_yAxis_noDrawStreak,
-          backgroundColor: 'rgba(0,19,255, 1)',
-          borderColor: 'rgba(0,19,255, 1)',
-          borderWidth: 3,
-          xAxisID: 'x2',
-          hidden: false,
-        },
-        {
-          label: '20-21',
-          data: this.league2021.chart_noConsecutiveDraws_yAxis_noDrawStreak,
-          backgroundColor: 'rgba(80, 0, 30, 1)',
-          borderColor: 'rgba(80, 0, 30, 1, 1)',
-          borderWidth: 3,
-          xAxisID: 'x2',
-          hidden: false,
-        },
-        {
-          label: '19-20',          
-          type: 'line',
-          data: this.league1920.chart_noConsecutiveDraws_yAxis_noDrawStreak,
-          backgroundColor: 'rgba(58, 255, 0, 1)',
-          borderColor: 'rgba(58, 255, 0, 1)',
-          borderWidth: 1,
-          xAxisID: 'x2',
-          hidden: false,
-        },        
-        {
-          label: '18-19',
-          data: this.league1819.chart_noConsecutiveDraws_yAxis_noDrawStreak,
-          backgroundColor: 'rgba(58, 5, 90, 1)',
-          borderColor: 'rgba(58, 5, 90, 1)',
-          borderWidth: 3,
-          xAxisID: 'x2',
-          hidden: false,
-        },     
-        {
-          label: '17-18',
-          data: this.league1718.chart_noConsecutiveDraws_yAxis_noDrawStreak,
-          backgroundColor: 'rgba(158, 55, 190, 1)',
-          borderColor: 'rgba(158, 55, 190, 1)',
-          borderWidth: 3,
-          xAxisID: 'x2',
-          hidden: false,
-        },
-        {
-          label: '16-17',
-          data: this.league1617.chart_noConsecutiveDraws_yAxis_noDrawStreak,
-          backgroundColor: 'rgba(40, 50, 210, 1)',
-          borderColor: 'rgba(40, 50, 210, 1)',
-          borderWidth: 3,
-          xAxisID: 'x2',
-          hidden: false,
-        },
-        {
-          label: '15-16',
-          data: this.league1516.chart_noConsecutiveDraws_yAxis_noDrawStreak,
-          backgroundColor: 'rgba(140, 150, 210, 1)',
-          borderColor: 'rgba(140, 150, 210, 1)',
-          borderWidth: 3,
-          xAxisID: 'x2',
-          hidden: false,
-        },
-        {
-          label: '14-15',
-          data: this.league1415.chart_noConsecutiveDraws_yAxis_noDrawStreak,
-          backgroundColor: 'rgba(70, 75, 105, 1)',
-          borderColor: 'rgba(70, 75, 105, 1)',
-          borderWidth: 3,
-          xAxisID: 'x2',
-          hidden: false,
-        },
-
+          {
+            label: '23-24',
+            type: 'line',
+            data: this.league2324.chart_noConsecutiveDraws_yAxis_noDrawStreak,
+            backgroundColor: 'rgba(255, 0, 0, 1)',
+            borderColor: 'rgba(255, 0, 0, 1)',
+            borderWidth: 1
+          },
+          {
+            label: '22-23',
+            type: 'line',
+            data: this.league2223.chart_noConsecutiveDraws_yAxis_noDrawStreak,
+            backgroundColor: 'rgba(0, 255, 0, 1)',
+            borderColor: 'rgba(0, 255, 0, 1)',
+            borderWidth: 1
+          },
+          {
+            label: '21-22',
+            type: 'line',
+            data: this.league2122.chart_noConsecutiveDraws_yAxis_noDrawStreak,
+            backgroundColor: 'rgba(0, 0, 255, 1)',
+            borderColor: 'rgba(0, 0, 255, 1)',
+            borderWidth: 1
+          },
+          {
+            label: '20-21',
+            type: 'line',
+            data: this.league2021.chart_noConsecutiveDraws_yAxis_noDrawStreak,
+            backgroundColor: 'rgba(255, 255, 0, 1)',
+            borderColor: 'rgba(255, 255, 0, 1)',
+            borderWidth: 1,
+          },
+          {
+            label: '19-20',          
+            type: 'line',
+            data: this.league1920.chart_noConsecutiveDraws_yAxis_noDrawStreak,
+            backgroundColor: 'rgba(0, 255, 255, 1)',
+            borderColor: 'rgba(0, 255, 255, 1)',
+            borderWidth: 1,
+          },        
+          {
+            label: '18-19',
+            type: 'line',
+            data: this.league1819.chart_noConsecutiveDraws_yAxis_noDrawStreak,
+            backgroundColor: 'rgba(255, 0, 255, 1)',
+            borderColor: 'rgba(255, 0, 255, 1)',
+            borderWidth: 1
+          },     
+          {
+            label: '17-18',
+            type: 'line',
+            data: this.league1718.chart_noConsecutiveDraws_yAxis_noDrawStreak,
+            backgroundColor: 'rgba(28, 128, 0, 1)',
+            borderColor: 'rgba(28, 128, 0, 1)',
+            borderWidth: 1
+          },
+          {
+            label: '16-17',
+            type: 'line',
+            data: this.league1617.chart_noConsecutiveDraws_yAxis_noDrawStreak,
+            backgroundColor: 'rgba(128, 0, 128, 1)',
+            borderColor: 'rgba(128, 0, 128, 1)',
+            borderWidth: 1
+          },
+          {
+            label: '15-16',
+            type: 'line',
+            data: this.league1516.chart_noConsecutiveDraws_yAxis_noDrawStreak,
+            backgroundColor: 'rgba(0, 128, 128, 1)',
+            borderColor: 'rgba(0, 128, 128, 1)',
+            borderWidth: 1
+          },
+          {
+            label: '14-15',
+            type: 'line',
+            data: this.league1415.chart_noConsecutiveDraws_yAxis_noDrawStreak,
+            backgroundColor: 'rgba(255, 255, 255, 1)',
+            borderColor: 'rgba(255, 255, 255, 1)',
+            borderWidth: 1,
+          },
         ]
+        
       },
       options: {
+        responsive: false, // Desactiva la opción "responsive"
+        maintainAspectRatio: false,
         plugins: {
           // zoom: {
           //   pan: {
