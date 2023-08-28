@@ -11,11 +11,11 @@ import { BackConnService } from 'src/app/back-conn.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'testchart';
   isLoggedIn:boolean = true; 
 
   constructor(private router:Router, private service: BackConnService) { }
   ngOnInit(): void {
+
     this.service.isLoggedSubject.subscribe((isLogged) => {
       setTimeout(() => {
         this.isLoggedIn = isLogged;

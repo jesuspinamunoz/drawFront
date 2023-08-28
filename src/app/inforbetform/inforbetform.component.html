@@ -2,7 +2,7 @@
 
     <div class="main-container">
         <!-- <button mat-button (click)="delete()"> -->
-            <button mat-button class="btn-delete">
+            <button mat-button class="btn-delete" (click)="deleteBet()">
                 <mat-icon>delete</mat-icon>
             </button>
 
@@ -32,8 +32,8 @@
                 <div>
                     <select  #mySelect name="select"  [(ngModel)]="status">
                         <option value="{{status}}">{{status}}</option>
-                        <option *ngIf="!wonBet">Ganada</option>
-                        <option *ngIf="wonBet">Perdida</option>
+                        <option>Ganada</option>
+                        <option>Perdida</option>
                         <option value="cashout">Cashout</option>
                     </select>
 

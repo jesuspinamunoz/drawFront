@@ -9,7 +9,6 @@ const UPDATESELECTEDNDRAWS = 'api/UpdateSelectedNDraws/';
 const UPDATEBETINLEAGUE = 'api/UpdateBetInLeague/';
 const LOGIN = 'api/login/';
 const LOGOUT = 'api/logout/';
-const PERSONALDATA = 'api/myPersonalData/';
 const MAINSUMMARY = "api/mainSummary/";
 const LEAGUESUMMARY = "api/leagueSummary/";
 const ALERTEDLEAGUES = "api/alertedLeagues/";
@@ -19,6 +18,9 @@ const NAVBARINFO = "api/navBarInfo/";
 const LEAGUENAMES = "api/leagueNames/";
 const INFOBETS = "api/infoBets/";
 const INFOBETFORM = "api/singleInfoBet/";
+const BETTINGSHOPS = "api/bettingShops/";
+const BETTINGSHOPDATA = "api/bettingShopData/";
+const USERCONFIGURATIONDATA = "api/userConfigurationData/";
 
 
 
@@ -89,6 +91,17 @@ export class BackConnService {
     return this.http.get<any>(UPDATEBETINLEAGUE + league + "/" + betInLeague, { headers });
   }
 
+  activateBettingShop(_bettingShop:string, _activate:boolean) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+
+    const bettingShopInfo = {
+      bettingShopName: _bettingShop,
+      activate: _activate
+    };
+
+    return this.http.put<any>(BETTINGSHOPS + "/", bettingShopInfo, { headers });
+  }
+
   login(_username: string, _password: string){
     const loginData = {
       username: _username,
@@ -113,24 +126,25 @@ export class BackConnService {
     return this.http.post<any>(LOGOUT, {headers}).subscribe(response => { });
   }
 
-  getMyPersonalData()
+
+  getBettingShopInfo(_bettingShopName: string)
   {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this.http.get<any>(PERSONALDATA, { headers });
+    return this.http.get<any>(BETTINGSHOPDATA + _bettingShopName + "/", { headers });
   }
 
-  updateMyPersonalData(_username: string, _password: string, _startbettingmoney: string, _telegramHash: string, _objetivo:number)
-  {
-    const personalDataToUpdate = {
-      username: _username,
-      password: _password,
-      startbettingmoney: _startbettingmoney,
-      telegramHash: _telegramHash,
-      objetivo: _objetivo,
-    };
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this.http.post<any>(PERSONALDATA, personalDataToUpdate, { headers } );
-  }
+  // updateMyPersonalData(_username: string, _password: string, _startbettingmoney: string, _telegramHash: string, _objetivo:number)
+  // {
+  //   const personalDataToUpdate = {
+  //     username: _username,
+  //     password: _password,
+  //     startbettingmoney: _startbettingmoney,
+  //     telegramHash: _telegramHash,
+  //     objetivo: _objetivo,
+  //   };
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+  //   return this.http.post<any>(WINAMAXDATA, personalDataToUpdate, { headers } );
+  // }
 
   getAlertedLeagues()
   {
@@ -173,13 +187,14 @@ export class BackConnService {
     return this.http.get<any>(INFOBETS, { headers });
   }
 
-  getInfoBetForm(_league:string, _date:string)
+  getInfoBetForm(_id:string)
   {
+    console.log(_id)
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this.http.get<any>(INFOBETFORM + _league + "/" + _date + "/", { headers });
+    return this.http.get<any>(INFOBETFORM + _id + "/", { headers });
   }
   
-  updateInfoBetForm(_league:string, _netMoney:string, _odd:number, _moneyBet:number, _status:string, _cashOut:number)
+  updateInfoBetForm(_betId:string ,_league:string, _netMoney:string, _odd:number, _moneyBet:number, _status:string, _cashOut:number)
   {
     const inforBetFormToUpdate = {
       league: _league,
@@ -191,7 +206,7 @@ export class BackConnService {
     };
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this.http.put<any>(INFOBETFORM +_league + "/" + _moneyBet + "/",  inforBetFormToUpdate, { headers });
+    return this.http.put<any>(INFOBETFORM + _betId + "/",  inforBetFormToUpdate, { headers });
   }
 
   addInfoBetForm(_league:string, _odd:number, _moneyBet:number, _status:string, _cashOut:number)
@@ -205,8 +220,37 @@ export class BackConnService {
     };
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this.http.post<any>(INFOBETFORM +_league + "/" + _moneyBet + "/",  inforBetFormToUpdate, { headers });
+    return this.http.post<any>(INFOBETFORM + "0/",  inforBetFormToUpdate, { headers });
   }
 
+  deleteBet(_betId:string)
+  {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.delete<any>(INFOBETFORM + _betId + "/", { headers });
+  }
+
+  getBettingShops()
+  {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.get<any>(BETTINGSHOPS, { headers });
+  }
+
+  getUserConfigurationData()
+  {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.get<any>(USERCONFIGURATIONDATA, { headers });
+  }
+  setUserConfigurationData(_startbettingmoney:number, _telegramHash:string, _objetivo:number)
+  {
+    const userConfiguration = {
+      startbettingmoney: _startbettingmoney,
+      telegramHash: _telegramHash,
+      objetivo: _objetivo,
+    };
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    return this.http.put<any>(USERCONFIGURATIONDATA, userConfiguration, { headers });
+  }
+
+  
 
 }

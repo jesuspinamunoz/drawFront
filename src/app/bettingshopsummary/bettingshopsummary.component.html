@@ -1,0 +1,25 @@
+<body>
+    <main>
+        <div class="container__principal">
+            <div class="tablas">
+                <!-- <div [hidden]="!leagueStats"> -->
+                    <div class="ptable">
+                        <table>
+                            <tr class="col">
+                                <th> </th>
+                                <th>Casa de apuestas</th>
+                                <th>Activa</th>
+                            </tr>
+                            <tr class="wpos" *ngFor="let item of bettingShopNames; index as i">
+                                <td>{{i+1}}</td>
+                                <td>{{item}}</td>
+                                <td>
+                                    <mat-slide-toggle [(ngModel)]=response[item] (change)="onInputChangeBetOnLeague($event.checked, item)" ></mat-slide-toggle>
+                                </td>                                
+                            </tr>
+                        </table>
+                    </div>
+            </div>
+        </div>
+    </main>
+</body>

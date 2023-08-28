@@ -29,12 +29,18 @@ export class InfobetsComponent implements OnInit {
     )
   }
 
-  onclick(_league:Text, _date:Text){
-    this.router.navigate(["infoBetForm", { league: _league, date:_date }]);
+  onSettingsClick(_id:string){
+    console.log("_id")
+    this.router.navigate(["infoBetForm", { id:_id }]);
+  }
+  onDeleteClick(_id:string){
+    this.service.deleteBet(_id).subscribe(response => { 
+      this.router.navigate([""]);
+    });
   }
 
   addBet(){
-    this.router.navigate(["infoBetForm", { league: "None", date:"" }]);
+    this.router.navigate(["infoBetForm", { id: "None"}]);
   }
 
 }

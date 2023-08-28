@@ -1,9 +1,50 @@
 <body>
     <main>
+        <div class="container_menu">
+            <div class="radio-inputs">
+                <label class="radio">
+                    <input (click)="showBettingShopSummary()" type="radio" name="radio" checked="">
+                    <span class="name">Casas de Apuestas</span>
+                </label>
+                <label class="radio">
+                    <input (click)="showWinamaxInfo()" type="radio" name="radio">
+                    <span class="name">Winamax</span>
+                </label>
+                <label class="radio">
+                    <input (click)="showBetFairInfo()" type="radio" name="radio">
+                    <span class="name">Betfair</span>
+                </label>     
+                <label class="radio">
+                    <input (click)="showPersonalConfiguration()" type="radio" name="radio">
+                    <span class="name">Ajustes</span>
+                </label>         
+            </div>
+        </div>
+
+        <div [hidden]="!showBettingShopSummaryBool">
+            <app-bettingshopsummary></app-bettingshopsummary>
+        </div>
+        <div [hidden]="!showWinamaxInfoBool">
+            <app-bettingshopdataform [isUserConfig]="false" [username]="winamaxUser" [password]="winamaxPassword"></app-bettingshopdataform>
+        </div>
+        <div [hidden]="!showBetFairInfoBool">
+            <app-bettingshopdataform [isUserConfig]="false" [username]="winamaxUser" [password]="winamaxPassword"></app-bettingshopdataform>
+        </div>
+        <div [hidden]="!showPersonalConfigurationBool">
+            <app-bettingshopdataform [isUserConfig]="true" [startbettingmoney]="startbettingmoney" [telegramHash]="telegramHash" [objetivo]="objetivo" [expirationDate]="expirationDate"></app-bettingshopdataform>
+        </div>
+
         <div class="botton__container">
             <button type="button" (click)="logout()">LogOut</button>
         </div>
-        <form class="my-form" (submit)="updatePersonalData()">
+
+
+
+
+
+
+
+        <!-- <form class="my-form" (submit)="updatePersonalData()">
             <div class="form-group">
                 <label for="username">Usuario de Winamax:</label>
                 <input type="text" id="username" name="username" [(ngModel)]="username" value="{{username}}">
@@ -30,7 +71,12 @@
             </div>
     
             <button type="submit">Actualizar</button>
-        </form>
+        </form> -->
+
+
+
+
+
 
     </main>
     

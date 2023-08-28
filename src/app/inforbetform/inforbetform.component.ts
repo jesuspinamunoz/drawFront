@@ -9,8 +9,8 @@ import { BackConnService } from 'src/app/back-conn.service';
   styleUrls: ['./inforbetform.component.css']
 })
 export class InforbetformComponent implements OnInit {
-
   leagueName:string = "";
+  leagueId:string = "";
   date:string = "";
   odd:number = 0;
   moneyBet:number = 0;
@@ -31,39 +31,30 @@ export class InforbetformComponent implements OnInit {
     })
 
     this.route.paramMap.subscribe(params => {
-      this.date = params.get('date') as string;  
-      this.leagueName = params.get('league') as string; 
+      this.leagueId = params.get('id') as string; 
       this.status = 'Perdida';    
 
-      if(this.leagueName!="None")
+      if(this.leagueId!="None")
       {
         this.isUpdateForm = true;
-        this.service.getInfoBetForm(this.leagueName, this.date).subscribe(response => {
+        this.service.getInfoBetForm(this.leagueId).subscribe(response => {
           this.odd = response.Cuota;
           this.moneyBet = response.DineroApostado;
-          this.wonBet = response.Ganada;
+          this.status = response.Status;
+          this.leagueName = response.Liga;
+          this.cashOut = response.Cashout;
           })        
       }
       
       });  
   }
 
-  onSelectedStatus(_status:any)
-  {
-    console.log(_status)
-    this.status = _status.type;
-    this.wonBet = true;
-    if(_status = 'closed')
-     {
-      this.showClosedParameters = true;
-     }
-  }
 
   updateSingleInfoBet()
   {
     if(this.isUpdateForm)
     {
-      this.service.updateInfoBetForm(this.leagueName, this.date ,this.odd, this.moneyBet, this.status, this.cashOut).subscribe(response => { 
+      this.service.updateInfoBetForm(this.leagueId, this.leagueName, this.date ,this.odd, this.moneyBet, this.status, this.cashOut).subscribe(response => { 
         this.router.navigate([""]);
       });
     }
@@ -71,9 +62,14 @@ export class InforbetformComponent implements OnInit {
       this.service.addInfoBetForm(this.leagueName, this.odd, this.moneyBet, this.status, this.cashOut).subscribe(response => { 
         this.router.navigate([""]);
       });
+    }    
+  }
 
-    }
-    
+  deleteBet()
+  {
+    this.service.deleteBet(this.leagueId).subscribe(response => { 
+      this.router.navigate([""]);
+    });
   }
 
 }

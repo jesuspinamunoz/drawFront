@@ -18,7 +18,6 @@ export class AlertedleaguesComponent implements OnInit {
     this.service.getAlertedLeagues().subscribe(response => {
       for (const item in response.alerts) {
         const alertedLeaguesDict: { [key: string]: number } = {};
-        console.log("item: " + item + " . value: " + response.alerts[item]);
         alertedLeaguesDict[item] = response.alerts[item];
         this.alertedLeagues.push(alertedLeaguesDict);
       }

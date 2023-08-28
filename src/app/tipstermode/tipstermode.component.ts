@@ -19,9 +19,7 @@ export class TipstermodeComponent implements OnInit {
   AverageOdd:any;
   MaxImporte:any;
   ImporteMedio:any;
-
-  leagueName:string = "Total";
-  
+  leagueName:string = "Total";  
   leagueNames: string[] = [];
 
   constructor(private service: BackConnService, private router: Router) { }
@@ -29,10 +27,13 @@ export class TipstermodeComponent implements OnInit {
   ngOnInit(): void {
     this.service.getleagueNames().subscribe(response => {
       this.leagueNames = response.leagueNames;        
+      this.ngOnChanges();    
     });
+  }
 
+  ngOnChanges()
+  {
     this.service.getTipsterMode().subscribe(response => {
-      this.leagueName = "Total";
       this.ImporteTotalApostado = response.ImporteTotalApostado[this.leagueName];
       this.ROI = response.ROI[this.leagueName];
       this.Exito = response.Exito[this.leagueName];
@@ -48,7 +49,8 @@ export class TipstermodeComponent implements OnInit {
 
   onSelected(value: string): void {
     this.leagueName = value;
-    // this.router.navigate(["leagueSummary", { data: value }]);
+    this.ngOnChanges();
   }
+
 
 }

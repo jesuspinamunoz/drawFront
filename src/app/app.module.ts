@@ -31,6 +31,8 @@ import { MatListModule } from '@angular/material/list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { InfobetsComponent } from './infobets/infobets.component';
 import { InforbetformComponent } from './inforbetform/inforbetform.component';
+import { BettingshopsummaryComponent } from './bettingshopsummary/bettingshopsummary.component';
+import { BettingshopdataformComponent } from './bettingshopdataform/bettingshopdataform.component';
 
 const routes: Routes = [
   { path: '', component: MainsummaryComponent, canActivate: [AuthGuard] },
@@ -41,7 +43,8 @@ const routes: Routes = [
   { path: 'alertedLeagues', component: AlertedleaguesComponent },
   { path: 'activeBetLeagues', component: ActivebetleaguesComponent },  
   { path: 'infoBetsComponent', component: InfobetsComponent },
-  { path: 'infoBetForm', component: InforbetformComponent }
+  { path: 'infoBetForm', component: InforbetformComponent },
+  { path: 'bettingShopSummary', component: BettingshopsummaryComponent },
 ];
 
 @NgModule({
@@ -64,7 +67,9 @@ const routes: Routes = [
     ActivebetleaguesComponent,
     TarjetitasComponent,
     InfobetsComponent,
-    InforbetformComponent
+    InforbetformComponent,
+    BettingshopsummaryComponent,
+    BettingshopdataformComponent
   ],
   imports: [
     BrowserModule,
