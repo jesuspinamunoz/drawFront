@@ -18,6 +18,7 @@ export class BettingshopdataformComponent implements OnInit {
   @Input() telegramHash: string = ""; 
   @Input() objetivo: number = 0; 
   @Input() expirationDate: string = ""; 
+  @Input() bornDate: string = ""; 
 
   @Input() isUserConfig: boolean = false; 
   
@@ -31,8 +32,7 @@ export class BettingshopdataformComponent implements OnInit {
   }
   updatePersonalConfiguration()
   {
-    console.log(this.startbettingmoney, this.telegramHash, this.objetivo)
-    this.service.setUserConfigurationData(this.startbettingmoney, this.telegramHash, this.objetivo).subscribe();
+    this.service.setUserConfigurationData(this.startbettingmoney, this.telegramHash, this.objetivo, this.bornDate).subscribe();
   }
 
 }

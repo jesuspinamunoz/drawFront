@@ -24,9 +24,23 @@ export class PersonaldataComponent implements OnInit {
   winamaxUser:string = "";
   winamaxPassword:string = "";
 
+  bettingShopName:string = ""
+  bornDate:string = ""
+
   constructor(private router: Router, private service: BackConnService) { }
 
   ngOnInit(): void {
+    this.service.getBettingShopInfo().subscribe(response => { 
+      this.bettingShopName = response.bettingShopName;
+      this.winamaxUser = response.username;
+      this.winamaxPassword = response.password;
+      this.bornDate = response.bornDate;
+      
+      this.showBettingShopSummaryBool = false;
+      this.showWinamaxInfoBool = true;
+      this.showBetFairInfoBool = false;
+      this.showPersonalConfigurationBool = false;
+    });
   }
   updatePersonalData(): void {
     // this.service.updateMyPersonalData(this.username, this.password, this.startbettingmoney, this.telegramHash, this.objetivo).subscribe(response => { 
@@ -49,9 +63,10 @@ export class PersonaldataComponent implements OnInit {
   }
   showWinamaxInfo()
   {
-    this.service.getBettingShopInfo('Winamax').subscribe(response => { 
-      this.winamaxUser = response.username
-      this.winamaxPassword = response.password
+    this.service.getBettingShopInfo().subscribe(response => { 
+      this.bettingShopName = response.bettingShopName;
+      this.winamaxUser = response.username;
+      this.winamaxPassword = response.password;
       
       this.showBettingShopSummaryBool = false;
       this.showWinamaxInfoBool = true;
@@ -60,18 +75,18 @@ export class PersonaldataComponent implements OnInit {
     });
     
   }
-  showBetFairInfo()
-  {
-    this.service.getBettingShopInfo('Betfair').subscribe(response => {
-      this.winamaxUser = response.username;
-      this.winamaxPassword = response.password;
+  // showBetFairInfo()
+  // {
+  //   this.service.getBettingShopInfo().subscribe(response => {
+  //     this.winamaxUser = response.username;
+  //     this.winamaxPassword = response.password;
       
-      this.showBettingShopSummaryBool = false;
-      this.showWinamaxInfoBool = false;
-      this.showBetFairInfoBool = true;
-      this.showPersonalConfigurationBool = false;
-    });    
-  }
+  //     this.showBettingShopSummaryBool = false;
+  //     this.showWinamaxInfoBool = false;
+  //     this.showBetFairInfoBool = true;
+  //     this.showPersonalConfigurationBool = false;
+  //   });    
+  // }
 
   showPersonalConfiguration()
   {

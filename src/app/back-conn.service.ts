@@ -127,10 +127,10 @@ export class BackConnService {
   }
 
 
-  getBettingShopInfo(_bettingShopName: string)
+  getBettingShopInfo()
   {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this.http.get<any>(BETTINGSHOPDATA + _bettingShopName + "/", { headers });
+    return this.http.get<any>(BETTINGSHOPDATA, { headers });
   }
 
   // updateMyPersonalData(_username: string, _password: string, _startbettingmoney: string, _telegramHash: string, _objetivo:number)
@@ -240,17 +240,18 @@ export class BackConnService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.http.get<any>(USERCONFIGURATIONDATA, { headers });
   }
-  setUserConfigurationData(_startbettingmoney:number, _telegramHash:string, _objetivo:number)
+
+  setUserConfigurationData(_startbettingmoney:number, _telegramHash:string, _objetivo:number, _bornDate:string)
   {
     const userConfiguration = {
       startbettingmoney: _startbettingmoney,
       telegramHash: _telegramHash,
       objetivo: _objetivo,
+      bornDate: _bornDate,
     };
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.http.put<any>(USERCONFIGURATIONDATA, userConfiguration, { headers });
   }
-
   
 
 }

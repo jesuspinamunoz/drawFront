@@ -2,18 +2,18 @@
     <main>
         <div class="container_menu">
             <div class="radio-inputs">
-                <label class="radio">
+                <!-- <label class="radio">
                     <input (click)="showBettingShopSummary()" type="radio" name="radio" checked="">
                     <span class="name">Casas de Apuestas</span>
-                </label>
+                </label> -->
                 <label class="radio">
                     <input (click)="showWinamaxInfo()" type="radio" name="radio">
-                    <span class="name">Winamax</span>
+                    <span class="name">{{bettingShopName}}</span>
                 </label>
-                <label class="radio">
+                <!-- <label class="radio">
                     <input (click)="showBetFairInfo()" type="radio" name="radio">
                     <span class="name">Betfair</span>
-                </label>     
+                </label>      -->
                 <label class="radio">
                     <input (click)="showPersonalConfiguration()" type="radio" name="radio">
                     <span class="name">Ajustes</span>
@@ -21,15 +21,15 @@
             </div>
         </div>
 
-        <div [hidden]="!showBettingShopSummaryBool">
+        <!-- <div [hidden]="!showBettingShopSummaryBool">
             <app-bettingshopsummary></app-bettingshopsummary>
-        </div>
+        </div> -->
         <div [hidden]="!showWinamaxInfoBool">
-            <app-bettingshopdataform [isUserConfig]="false" [username]="winamaxUser" [password]="winamaxPassword"></app-bettingshopdataform>
+            <app-bettingshopdataform [isUserConfig]="false" [username]="winamaxUser" [password]="winamaxPassword" [bornDate]="bornDate" ></app-bettingshopdataform>
         </div>
-        <div [hidden]="!showBetFairInfoBool">
+        <!-- <div [hidden]="!showBetFairInfoBool">
             <app-bettingshopdataform [isUserConfig]="false" [username]="winamaxUser" [password]="winamaxPassword"></app-bettingshopdataform>
-        </div>
+        </div> -->
         <div [hidden]="!showPersonalConfigurationBool">
             <app-bettingshopdataform [isUserConfig]="true" [startbettingmoney]="startbettingmoney" [telegramHash]="telegramHash" [objetivo]="objetivo" [expirationDate]="expirationDate"></app-bettingshopdataform>
         </div>
