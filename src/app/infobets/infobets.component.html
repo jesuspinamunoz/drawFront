@@ -20,11 +20,11 @@
                         <ng-container *ngFor="let item of infoBetObjets | keyvalue">
                             <tr class="wpos" *ngFor="let valor of item.value; index as i">
                                 <!-- <td>{{i+1}}</td> -->
-                                <td>{{valor.match}}</td>
-                                <td>{{valor.league}}</td>
-                                <td>{{valor.date}}</td>
-                                <td><mat-icon (click)="onSettingsClick(valor.id)">settings</mat-icon></td>
-                                <td><mat-icon (click)="onDeleteClick(valor.id)">delete</mat-icon> </td>
+                                <td class="nobutton">{{valor.match}}</td>
+                                <td class="nobutton">{{valor.league}}</td>
+                                <td class="nobutton">{{valor.date}}</td>
+                                <td class="button"><mat-icon (click)="onSettingsClick(valor.id)">settings</mat-icon></td>
+                                <td class="button"><mat-icon (click)="onDeleteClick(valor.id)">delete</mat-icon> </td>
                             </tr>
                         </ng-container>
                     </tbody>
