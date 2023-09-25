@@ -189,12 +189,11 @@ export class BackConnService {
 
   getInfoBetForm(_id:string)
   {
-    console.log(_id)
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.http.get<any>(INFOBETFORM + _id + "/", { headers });
   }
   
-  updateInfoBetForm(_betId:string ,_league:string, _netMoney:string, _odd:number, _moneyBet:number, _status:string, _cashOut:number)
+  updateInfoBetForm(_betId:string ,_league:string, _netMoney:string, _odd:number, _moneyBet:number, _status:string, _cashOut:number, _homeTeam:string, _awayTeam:string)
   {
     const inforBetFormToUpdate = {
       league: _league,
@@ -203,13 +202,15 @@ export class BackConnService {
       moneyBet: _moneyBet,
       status: _status,
       cashOut: _cashOut,
+      homeTeam: _homeTeam,
+      awayTeam: _awayTeam,
     };
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.http.put<any>(INFOBETFORM + _betId + "/",  inforBetFormToUpdate, { headers });
   }
 
-  addInfoBetForm(_league:string, _odd:number, _moneyBet:number, _status:string, _cashOut:number)
+  addInfoBetForm(_league:string, _odd:number, _moneyBet:number, _status:string, _cashOut:number, _homeTeam:string, _awayTeam:string)
   {
     const inforBetFormToUpdate = {
       league: _league,
@@ -217,6 +218,8 @@ export class BackConnService {
       moneyBet: _moneyBet,
       status: _status,
       cashOut: _cashOut,
+      homeTeam: _homeTeam,
+      awayTeam: _awayTeam,
     };
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);

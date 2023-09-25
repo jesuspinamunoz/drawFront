@@ -12,6 +12,8 @@ export class InforbetformComponent implements OnInit {
   leagueName:string = "";
   leagueId:string = "";
   date:string = "";
+  homeTeam:string = "";
+  awayTeam:string = "";
   odd:number = 0;
   moneyBet:number = 0;
   wonBet:boolean = false;
@@ -43,6 +45,8 @@ export class InforbetformComponent implements OnInit {
           this.status = response.Status;
           this.leagueName = response.Liga;
           this.cashOut = response.Cashout;
+          this.homeTeam = response.homeTeam;
+          this.awayTeam = response.awayTeam;
           })        
       }
       
@@ -54,12 +58,12 @@ export class InforbetformComponent implements OnInit {
   {
     if(this.isUpdateForm)
     {
-      this.service.updateInfoBetForm(this.leagueId, this.leagueName, this.date ,this.odd, this.moneyBet, this.status, this.cashOut).subscribe(response => { 
+      this.service.updateInfoBetForm(this.leagueId, this.leagueName, this.date ,this.odd, this.moneyBet, this.status, this.cashOut, this.homeTeam, this.awayTeam).subscribe(response => { 
         this.router.navigate([""]);
       });
     }
     else{
-      this.service.addInfoBetForm(this.leagueName, this.odd, this.moneyBet, this.status, this.cashOut).subscribe(response => { 
+      this.service.addInfoBetForm(this.leagueName, this.odd, this.moneyBet, this.status, this.cashOut, this.homeTeam, this.awayTeam).subscribe(response => { 
         this.router.navigate([""]);
       });
     }    
