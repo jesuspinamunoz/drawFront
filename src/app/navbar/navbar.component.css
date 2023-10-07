@@ -14,17 +14,17 @@
 }
 
 .logo {
-    width: 150px;
-    height: 150px;
-	  margin-top: 10px;
-    background-image: url('src/assets/newLogo2.png');
+    width: 200px;
+    height: 200px;
+	  /* margin-top: 5px; */
+    background-image: url('src/assets/logo_bing.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .totalMoneyText{  
-  margin-top: 10px;
+  /* margin-top: 5px; */
 	font-size: 12px;
 }
 

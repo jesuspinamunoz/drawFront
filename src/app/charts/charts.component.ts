@@ -76,7 +76,7 @@ export class ChartsComponent implements OnInit {
           },
           scales: {
             x: {
-              display: false,
+              display: true,
               ticks: {
                 color: "white"
               }
