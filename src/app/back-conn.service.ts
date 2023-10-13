@@ -45,9 +45,9 @@ export class BackConnService {
 
   
 
-  getMainSummary() {
+  getMainSummary(_chart_filter:string) {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-    return this.http.get<any>(MAINSUMMARY, { headers });
+    return this.http.get<any>(MAINSUMMARY + _chart_filter, { headers });
   }
 
   getLeagueSummary(_leagueName: string) {

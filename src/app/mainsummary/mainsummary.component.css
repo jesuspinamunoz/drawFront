@@ -99,8 +99,8 @@ main {
 	box-sizing: border-box;
 	box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
 	padding: 0.25rem;
-	width: 300px;
-	font-size: 14px;
+	width: 200px;
+	font-size: 11px;
   }
   
   .radio-inputs .radio {
@@ -158,5 +158,12 @@ main {
 	color: rgb(255, 64, 129);
 	/* Agrega aquí cualquier otro estilo que desees cuando el ratón pasa por encima */
   }
+
+
+  /* .container_menu{
+	height: 100%;
+	width: 100%;
+	display: flex;
+  } */
   
   

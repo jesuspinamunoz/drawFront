@@ -60,7 +60,7 @@ export class MainsummaryComponent implements OnInit {
   }
 
   goToMainPage() {
-    this.service.getMainSummary().subscribe(response => {
+    this.service.getMainSummary('%Y-%m-%d').subscribe(response => {
       this.responseJson = response;
       // this.alerts = response.alert;
       this.userNetMoney = response.userNetMoney;
@@ -79,6 +79,7 @@ export class MainsummaryComponent implements OnInit {
   }
 
   ngOnChanges() {
+    this.leaguesNetIncome = [];
     if (this.responseJson) {
       // Evitar leer dos keys que no son ligas como 'Alert' y 'userNetMoney', 'AlertDict'
       for (const league in this.responseJson) {
@@ -276,6 +277,21 @@ export class MainsummaryComponent implements OnInit {
   onSelectedLeague(value: string): void {
     this.league = value;
     this.router.navigate(["leagueSummary", { data: value }]);
+  }
+
+  onSelectedChartFilter(value:string):void{
+    this.service.getMainSummary(value).subscribe(response => {
+      this.responseJson = response;
+      this.userNetMoney = response.userNetMoney;
+      this.userNetMoneySelectedObject = response.userNetMoney.find((objeto: userNetMoney) => objeto.LeagueID === 'allLeagues');
+      this.userTotalProfit = response.TotalProfit;
+      this.ngOnChanges();
+    },
+      (error: HttpErrorResponse) => {
+        const statusCode = error.status;
+        this.router.navigate(["login"]);
+      }
+    );
   }
 
 }

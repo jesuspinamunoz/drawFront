@@ -1,15 +1,25 @@
 <body>
     <main>
-        <!-- <div class="radio-inputs">
-            <label class="radio">
-              <input (click)="showTotalProfit()" type="radio" name="radio" checked="">
-              <span class="name">Beneficio Total</span>
-            </label>
-            <label class="radio">
-              <input (click)="showLeagueProfit()" type="radio" name="radio">
-              <span class="name">Liga stats</span>
-            </label>
-        </div> -->
+        <div class="container_menu">
+            <div class="radio-inputs">
+                <label class="radio">
+                    <input (click)="onSelectedChartFilter('%H:%M %Y-%m-%d')" type="radio" name="radio" checked="">
+                    <span class="name">Minutos</span>
+                </label>
+                <label class="radio">
+                    <input (click)="onSelectedChartFilter('%Y-%m-%d %H')" type="radio" name="radio">
+                    <span class="name">Horas</span>
+                </label>
+                <label class="radio">
+                    <input (click)="onSelectedChartFilter('%Y-%m-%d')" type="radio" name="radio">
+                    <span class="name">Días</span>
+                </label>
+                <label class="radio">
+                    <input (click)="onSelectedChartFilter('%Y-%m')" type="radio" name="radio">
+                    <span class="name">Meses</span>
+                </label>                
+            </div>
+        </div>
 
         <div class="container__principal">
 
